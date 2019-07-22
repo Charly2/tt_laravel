@@ -64,33 +64,7 @@ $(document).ready( function() {
     });
 
 
-    $('#finalizar').click(function (e) {
 
-        if ($('#finalizar').next('.alert').length){
-            $('#finalizar').next('.alert').remove();
-        }
-
-        $_Err = 0;
-        $('.req_this').each(function (e) {
-            if (this.value == "" ){
-                $_Err +=1;
-                $(this).parent().setEstatus('error',"Este campo es obligatorio");
-            }
-        });
-
-        if ($_Err > 0){
-            console.log("Errores");
-            $(this).after('<div class="alert alert-danger alert-dismissible fade show" role="alert">\n' +
-                '  <button type="button" class="close" data-dismiss="alert" aria-label="Close">\n' +
-                '    <span aria-hidden="true">&times;</span>\n' +
-                '  </button>\n' +
-                '  <strong>¡Omitiste uno o más campos marcados como obligatorios!</strong> <br> Porfavor ingresa información en los campos marcados con *.\n' +
-                '</div>')
-        } else{
-            window.location.href = "/cendi/pre_registro/ok";
-        }
-
-    });
 
 
 

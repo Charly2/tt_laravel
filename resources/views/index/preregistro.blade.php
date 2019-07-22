@@ -18,7 +18,7 @@
         </div>
     </section>
 
-        <form id="form" action="{{url('preregistro')}}" method="post">
+        <form id="form" action="{{url('preregistro')}}" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
 
         <div class="list-group noPadding">
@@ -35,19 +35,34 @@
                             <div class="col-md-4">
                                 <div class="form-group ">
                                     <label>Nombre (s)*:</label>
-                                    <input type="text" name="" class="form-control autoupdate req_this"     placeholder="Escribe aquí tu nombre" />
+                                    <input type="text" value="{{old('nombre')}}" name="nombre" class="form-control autoupdate req_this {{$errors->has('nombre')?'is-invalid':''}}"     placeholder="Escribe aquí tu nombre" />
+                                    @if($errors->has('nombre'))
+                                        <div class="invalid-feedback">
+                                            {{$errors->first('nombre')}}
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group ">
                                     <label>Primer apellido*:</label>
-                                    <input type="text"    class="form-control autoupdate req_this" placeholder="Escribe aquí tu primer apellido" />
+                                    <input type="text" name="appaterno" value="{{old('appaterno')}}"  class="form-control autoupdate req_this {{$errors->has('appat')?'is-invalid':''}}" placeholder="Escribe aquí tu primer apellido" />
+                                    @if($errors->has('appaterno'))
+                                        <div class="invalid-feedback">
+                                            {{$errors->first('appaterno')}}
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Segundo apellido*:</label>
-                                    <input type="text"  class="form-control autoupdate req_this"  placeholder="Escribe aquí tu segundo apellido"/>
+                                    <input type="text" name="apmaterno" value="{{old('apmaterno')}}"  class="form-control autoupdate req_this {{$errors->has('apmat')?'is-invalid':''}}"  placeholder="Escribe aquí tu segundo apellido"/>
+                                    @if($errors->has('apmaterno'))
+                                        <div class="invalid-feedback">
+                                            {{$errors->first('apmaterno')}}
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -55,7 +70,7 @@
                             <div class="col-md-4">
                                 <div class="form-group ">
                                     <label>Lugar de nacimiento*:</label>
-                                    <select  name="profession_id" class="form-control">
+                                    <select  name="lugarnac" class="form-control">
                                         @foreach($estados as $estado)
                                             {{--<option value="{{$pro->id}}">{{$pro->title}}</option>--}}
                                             <option value="{{ $estado->nombre }}"{{ old('luegarnac') == $estado->nombre ? ' selected' : '' }}>
@@ -68,13 +83,23 @@
                             <div class="col-md-4">
                                 <div class="form-group ">
                                     <label>Fecha de nacimiento*:</label>
-                                    <input type="text"  class="form-control fecha autoupdate req_this" placeholder="" />
+                                    <input type="text" value="{{old('fechanac')}}"  name="fechanac" class="form-control fecha autoupdate req_this {{$errors->has('fechanac')?'is-invalid':''}}" placeholder="dd/mm/aaaa" />
+                                    @if($errors->has('fechanac'))
+                                        <div class="invalid-feedback">
+                                            {{$errors->first('fechanac')}}
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>CURP*:</label>
-                                    <input type="text" class="form-control autoupdate req_this"  data-valido="curpValido" placeholder="Escribe aquí tu CURP"/>
+                                    <input type="text" name="curp" value="{{old('curp')}}"  class="form-control autoupdate req_this {{$errors->has('curp')?'is-invalid':''}}"  data-valido="curpValido" placeholder="Escribe aquí tu CURP"/>
+                                    @if($errors->has('curp'))
+                                        <div class="invalid-feedback">
+                                            {{$errors->first('curp')}}
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -86,7 +111,7 @@
                             <div class="col-md-4">
                                 <div class="form-group ">
                                     <label>Género*:</label>
-                                    <select type="text"  class="form-control autoupdate req_this" id="genero" data-callback="muestraAlertGenero" >
+                                    <select type="text" name="genero"  class="form-control autoupdate req_this" id="genero" data-callback="muestraAlertGenero" >
                                         <option value="masculino" >Masculino</option>
                                         <option value="femenino" >Femenino</option>
                                     </select>
@@ -95,7 +120,7 @@
                             <div class="col-md-4">
                                 <div class="form-group ">
                                     <label>Estado Civil*:</label>
-                                    <select type="text"  class="form-control autoupdate req_this" id="edocivil" data-valido="validaedoCivil" >
+                                    <select type="text" name="edocivil"  class="form-control autoupdate req_this" id="edocivil" data-valido="validaedoCivil" >
                                         <option value="casado" >Casada</option>
                                         <option value="soltero" >Soltero</option>
                                         <option value="viudo" >Viudo</option>
@@ -105,25 +130,8 @@
 
                         </div>
 
-                        <div class="row rowjc hide" id="fileuploadedocivil">
-                            <div class="col-md-8">
-                                <div class="form-group ">
-                                    <label>Adjuntar evidencia*:</label>
-                                    <form action="#" method="GET" class="form demo_form">
-                                        <div class="upload" data-upload-options='{"action":""}'></div>
-                                        <p class="info_docs">Formato: PDF o JPG. Tamaño máximo: 4 Mb</p>
-                                        <div class="filelists">
-                                            <ol class="filelist complete">
-                                                <li data-index="0"><span class="content"><span class="file" style="color: rgb(255, 255, 255);"></span></span><span class="bar" style="width: 100%; background: rgb(47, 191, 65);"></span></li>
-                                            </ol>
-                                            <ol class="filelist queue">
-                                            </ol>
-                                        </div>
-                                    </form>
-                                </div>
 
-                            </div>
-                        </div>
+
 
 
 
@@ -199,31 +207,55 @@
                         </div>--}}
 
 
-                        <span class="subtitlereg">Fotografía</span>
+                        <span class="subtitlereg">Documentos</span>
 
                         <div class="row rowjc">
-                            <div class="col-md-4">
-                                <div class="input-group">
-                                    <label class="lw100">Adjuntar Fotografía*:</label>
-                                    <form action="#" method="GET" class="form demo_form">
-                                        <div class="upload" data-upload-options='{"action":""}'></div>
-                                        <p class="info_docs">Formato: PDF o JPG. Tamaño máximo: 4 Mb</p>
-                                        <div class="filelists">
-                                            <ol class="filelist complete">
-
-                                            </ol>
-                                            <ol class="filelist queue">
-                                            </ol>
+                            <div class="col-md-6">
+                                    <label class="lw100">Adjuntar foto de la credendial instutucional:</label>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="input-group">
+                                                <div class="custom-file">
+                                                    <input class="custom-file-input" id="inputGroupFile04" name="foto_pre" type="file">
+                                                    <label class="custom-file-label" id="fileeaa" for="inputGroupFile04">Subir archivo</label>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </form>
-                                </div>
+                                    </div>
+                                @if($errors->has('foto_pre'))
+                                    <div class="invalid-feedback" style="display: block">
+                                        {{$errors->first('foto_pre')}}
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="row rowjc mt-4" id="fileuploadedocivil">
+                            <div class="col-md-6 offset-md-3">
+                                @if($errors->any())
+
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        <strong>Error!</strong> Se encontraron algunos errores en tu información.
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                @endif
+                            </div>
+
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-4 offset-md-8">
+                                <button type="submit" id="finalizars" class="btn btn-block btn-primary float-right btnnet" value="Finalizar">Finalizar</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <input type="submit" id="finalizar" class="btn btn-primary float-right btnnet" value="Finalizar">
+
 
         </div>
 
@@ -235,52 +267,45 @@
 
     </style>
     <script>
-        $(document).ready(function() {
-            $(".upload").upload({
-                maxSize: 1073741824,
-                maxConcurrent:1,
 
-                beforeSend: onBeforeSend
-            }).on("start.upload", onStart)
-                .on("complete.upload", onCompleteEdoCivilAll)
-                .on("filestart.upload", onFileStart)
-                .on("fileprogress.upload", onFileProgress)
-                .on("filecomplete.upload", onCompleteEdoCivil)
-                .on("fileerror.upload", onFileError)
-                .on("chunkstart.upload", onChunkStart)
-                .on("chunkprogress.upload", onChunkProgress)
-                .on("chunkcomplete.upload", onChunkComplete)
-                .on("chunkerror.upload", onChunkError)
-                .on("queued.upload", onQueued);
+        $('.form-control').change(function (e) {
+            e.preventDefault();
+            console.log(this.classList.remove('is-invalid'));
+        });
+        $(function() {
+            // We can attach the `fileselect` event to all file inputs on the page
+            $(document).on("change", ":file", function() {
+                var input = $(this),
+                    numFiles = input.get(0).files ? input.get(0).files.length : 1,
+                    label = input
+                        .val()
+                        .replace(/\\/g, "/")
+                        .replace(/.*\//, "");
+                input.trigger("fileselect", [numFiles, label]);
+            });
 
+            // We can watch for our custom `fileselect` event like this
+            $(document).ready(function() {
+                $(":file").on("fileselect", function(event, numFiles, label) {
+                    var input = $(this)
+                            .parents(".input-group")
+                            .find(":text"),
+                        log = numFiles > 1 ? numFiles + " files selected" : label;
 
+                    if (input.length) {
+                        input.val(log);
+                    } else {
+                        if (log) {
+                            $('#fileeaa').html(log);
 
+                        }
+                    }
+                });
+            });
         });
 
 
-        function  onCompleteEdoCivilAll(e) {
-            console.log(e)
-        }
 
-        function onCompleteEdoCivil(e, file, response) {
-            response = response.split("--code--")[1];
-            if (response.trim() != "OK" ) {
-                $(this).parents("form").find(".filelist.complete")
-                    .find("li[data-index=" + file.index + "]").addClass("error")
-                    .find(".progress").text(response.trim());
-            } else {
-                var $target = $(this).parents("form").find(".filelist.complete").find("li[data-index=" + file.index + "]");
-                $target.find(".file").text(file.name);
-                $target.find(".progress").remove();
-                $target.find(".cancel").remove();
-                //$target.appendTo($(this).parents("form").find(".filelist.complete"));
-                $(this).parents("form").find(".filelist.complete").html($target);
-                var a = $(this).parents("form").find(".filelist.complete .content .file")
-                var b = $(this).parents("form").find(".filelist.complete .bar ")
-                a.css('color','white')
-                b.css('background','#2fbf41')
-            }
-        }
 
 
 

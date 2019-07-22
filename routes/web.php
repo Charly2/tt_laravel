@@ -19,7 +19,7 @@ use App\Persona;
 Route::get('/','HomeController@index')->name('index.index');
 Route::get('/requisitos','HomeController@requisitos')->name('index.requisitos');
 Route::get('/preregistro','HomeController@preregistro')->name('index.preregistro');
-Route::post('/preregistro','HomeController@save')->name('index.preregistro.post');
+Route::post('/preregistro','HomeController@save')->name('index.preregistro_post');
 
 
 

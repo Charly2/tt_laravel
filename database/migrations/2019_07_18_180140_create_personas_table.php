@@ -23,7 +23,7 @@ class CreatePersonasTable extends Migration
             $table->string('estadocivil')->nullable();
             $table->string('curp');
             $table->string('genero');
-            $table->string('gruposan');
+            $table->string('gruposan')->nullable();
             $table->string('telefono_fijo')->nullable();
             $table->string('telefono_cel')->nullable();
             $table->string('email')->nullable();
