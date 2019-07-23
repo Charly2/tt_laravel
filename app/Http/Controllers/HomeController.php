@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Centro;
 use App\Direccion;
 use App\Estado;
 use App\Persona;
@@ -66,7 +67,9 @@ class HomeController extends Controller
             "curp" => "required",
             "genero" => "required",
             "edocivil" => "required",
-            "foto_pre" => "",
+            "foto_pre" => "required",
+            "num_emp" => "required",
+            "ct" => "required"
 
         ],[
             'nombre.required' => 'El campo nombre es obligatorio',
@@ -76,7 +79,10 @@ class HomeController extends Controller
             "fechanac.required" => "El campo fecha de nacimiento es obligatorio",
             "curp.required" => "El campo curp es obligatorio",
             "genero.required" => "El campo genero es obligatorio",
-            "edocivil.required" => "El campo estado civil es obligatorio"
+            "edocivil.required" => "El campo estado civil es obligatorio",
+            "num_emp.required" => "El campo número de empleado es obligatorio",
+            "ct.required" => "El campo de centro de trabajo es obligatorio",
+            "foto_pre.required" => "Debes adjuntar una fotografiá de tu credencial para inicial el proceso"
         ]);
 
 
@@ -84,7 +90,9 @@ class HomeController extends Controller
 
         $prevalid = Prevalidacion::create([
             'persona' => $persona->id,
-            'estado' => 1
+            'estado' => 1,
+            'num_emp' => $data['num_emp'],
+            'ct' => $data['ct']
         ]);
 
         
@@ -92,15 +100,16 @@ class HomeController extends Controller
 
         if (request()->hasFile('foto_pre')){
             $fileExt = request()->file('foto_pre')->getClientOriginalName();
-            $path = storage_path('app\pre_valid/').$prevalid->id;
+            $path = storage_path('app/pre_valid/').$prevalid->id;
             $fileName = pathinfo($fileExt,PATHINFO_FILENAME);
-            //$prevalid->doc =$fileName;
+            $prevalid->doc =$fileExt;
 
             $Ext = request()->file('foto_pre')->getClientOriginalExtension();
 
             $exists = file_exists($path);
             if (!$exists){
                 print_r($path);
+
                 mkdir($path, 0777);
             }
             $fileToStore = 'prevalid_'.$prevalid->id.'.'.$Ext;
@@ -123,8 +132,9 @@ class HomeController extends Controller
     public function preregistro(){
 
         $estados = Estado::all();
+        $centros = Centro::all();
 
-        return view('index.preregistro',['estados'=>$estados]);
+        return view('index.preregistro',['estados'=>$estados,'centros'=>$centros]);
     }
 
 

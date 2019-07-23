@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Prevalidacion extends Model
 {
-    protected $fillable = ['doc','estado','persona'];
+    protected $fillable = ['doc','estado','persona','num_emp','ct'];
 }

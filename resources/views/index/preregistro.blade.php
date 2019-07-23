@@ -30,6 +30,41 @@
 
                 <div data-acc-contentx>
                     <div class="my-3">
+                        <span class="subtitlereg">Datos institucionales</span>
+                        <div class="row rowjc">
+                            <div class="col-md-4">
+                                <div class="form-group ">
+                                    <label>Número de empleado*:</label>
+                                    <input type="text" value="{{old('num_emp')}}" name="num_emp" class="form-control autoupdate req_this {{$errors->has('num_emp')?'is-invalid':''}}"     placeholder="Escribe aquí tu nombre" />
+                                    @if($errors->has('num_emp'))
+                                        <div class="invalid-feedback">
+                                            {{$errors->first('num_emp')}}
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group ">
+                                    <label>Centro de Trabajo:</label>
+
+                                    <select  name="ct" class="form-control">
+                                        @foreach($centros as $centro)
+                                            {{--<option value="{{$pro->id}}">{{$pro->title}}</option>--}}
+                                            <option value="{{ $centro->nombre }}"{{ old('ct') == $centro->nombre ? ' selected' : '' }}>
+                                                {{ $centro->nombre }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @if($errors->has('ct'))
+                                        <div class="invalid-feedback">
+                                            {{$errors->first('ct')}}
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+
+
                         <span class="subtitlereg">Datos Generales</span>
                         <div class="row rowjc">
                             <div class="col-md-4">
@@ -46,7 +81,7 @@
                             <div class="col-md-4">
                                 <div class="form-group ">
                                     <label>Primer apellido*:</label>
-                                    <input type="text" name="appaterno" value="{{old('appaterno')}}"  class="form-control autoupdate req_this {{$errors->has('appat')?'is-invalid':''}}" placeholder="Escribe aquí tu primer apellido" />
+                                    <input type="text" name="appaterno" value="{{old('appaterno')}}"  class="form-control autoupdate req_this {{$errors->has('appaterno')?'is-invalid':''}}" placeholder="Escribe aquí tu primer apellido" />
                                     @if($errors->has('appaterno'))
                                         <div class="invalid-feedback">
                                             {{$errors->first('appaterno')}}
@@ -57,7 +92,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Segundo apellido*:</label>
-                                    <input type="text" name="apmaterno" value="{{old('apmaterno')}}"  class="form-control autoupdate req_this {{$errors->has('apmat')?'is-invalid':''}}"  placeholder="Escribe aquí tu segundo apellido"/>
+                                    <input type="text" name="apmaterno" value="{{old('apmaterno')}}"  class="form-control autoupdate req_this {{$errors->has('apmaterno')?'is-invalid':''}}"  placeholder="Escribe aquí tu segundo apellido"/>
                                     @if($errors->has('apmaterno'))
                                         <div class="invalid-feedback">
                                             {{$errors->first('apmaterno')}}
