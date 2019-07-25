@@ -108,11 +108,12 @@ class HomeController extends Controller
 
             $exists = file_exists($path);
             if (!$exists){
-                print_r($path);
+
 
                 mkdir($path, 0777);
             }
             $fileToStore = 'prevalid_'.$prevalid->id.'.'.$Ext;
+            $prevalid->ext =$Ext;
 
             move_uploaded_file($_FILES["foto_pre"]["tmp_name"], $path.'/'.$fileToStore);
 
@@ -121,12 +122,7 @@ class HomeController extends Controller
         }
         $prevalid->save();
 
-        dd($data);
-
-
-
-
-        return "";
+        return view('index.preregistrook');
     }
 
     public function preregistro(){
@@ -136,6 +132,7 @@ class HomeController extends Controller
 
         return view('index.preregistro',['estados'=>$estados,'centros'=>$centros]);
     }
+
 
 
 

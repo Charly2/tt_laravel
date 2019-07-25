@@ -18,6 +18,7 @@ class CreatePrevalidacionTable extends Migration
             $table->unsignedInteger('persona')->nullable();
             $table->foreign('persona')->references('id')->on('personas')->onDelete('set null');
             $table->string('doc')->nullable();
+            $table->string('ext')->nullable();
             $table->string('num_emp')->nullable();
             $table->string('ct')->nullable();
             $table->integer('estado')->nullable();

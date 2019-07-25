@@ -33,4 +33,9 @@ class Persona extends Model
         $this->save();
     }
 
+
+    public function nombrecompleto(){
+        return $this->nombre." ".$this->appaterno." ".$this->apmaterno;
+    }
+
 }
