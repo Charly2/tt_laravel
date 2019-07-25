@@ -1605,9 +1605,14 @@ fieldset[disabled] input[type="text"] {
 
 .has-error .form-control, .has-error .select2-search input[type="text"], .select2-search .has-error input[type="text"] {
   color: #e74c3c;
-  border-color: #e74c3c;
+  border-color: #e74c3c!important;
   box-shadow: none;
 }
+.form-control.has-error  > .login-field-icon{
+  color: #e74c3c!important;
+}
+
+
 
 .has-error .form-control::-moz-placeholder, .has-error .select2-search input[type="text"]::-moz-placeholder, .select2-search .has-error input[type="text"]::-moz-placeholder {
   color: #e74c3c;

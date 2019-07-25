@@ -1,7 +1,9 @@
 <div class="col-md-3 left_col">
     <div class="left_col scroll-view">
         <div class="navbar nav_title" style="border: 0;">
-            <a href="{{url('/')}}" class="site_title"><i class="fa fa-paw"></i> <span>{{config('app.name')}}</span></a>
+            <a href="{{url('/')}}" class="site_title">
+                <img src="{{asset('images/logo/logo_header.png')}}" alt="">
+            </a>
         </div>
 
         <div class="clearfix"></div>
@@ -12,8 +14,8 @@
                 <img src="/images/img.jpg" alt="..." class="img-circle profile_img">
             </div>
             <div class="profile_info">
-                <span>Welcome,</span>
-                <h2></h2>
+                <span>Administrador COCENDI,</span>
+                <h2>Juan Carlos Sanchez Trejo</h2>
             </div>
         </div>
         <!-- /menu profile quick info -->
