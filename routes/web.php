@@ -32,9 +32,7 @@ Route::get('/verificapreregistro/valida/{id}','VerificaController@valida')->name
 Route::post('/verificapreregistro/valida/{id}','VerificaController@validapost')->name('verifica.validapost');
 Route::post('/verificapreregistro/rechaza/{id}','VerificaController@rechaza')->name('verifica.rechaza');
 Route::get('/verificapreregistro/ver/{id}','VerificaController@valida')->name('verifica.ver');
-Route::get('/login',function (){
-    return view('auth.login');
-})->name('logins');
+
 
 
 

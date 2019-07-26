@@ -1,5 +1,25 @@
 
 <style>
+    @-webkit-keyframes active-spin {
+        from {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        to {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+    @keyframes active-spin {
+        from {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        to {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
     .continer_pb{
         margin: auto;
         width: 100%;
@@ -58,9 +78,9 @@
         position: absolute;
         width: 100%;
         left: 0;
-        top: 0;
+        top: 21px;
         background: #682444fa;
-        height: 15px;
+        height: 9px;
 
     }
 
@@ -70,11 +90,11 @@
     .pb_item{
         background: #E4E4E7;
         width: 100%;
-        height: 11px;
+        height: 15px;
         z-index: 100;
     }
 
-    .circle_pb.anima .glyphicon{
+    .anima span{
         -webkit-animation: active-spin infinite 1s linear;
         animation: active-spin infinite 1s linear;
     }
@@ -125,7 +145,7 @@
         <div class="item_pb ok">
             <div class="pb_item "></div>
             <div class="circle_pb ">
-                <span class="glyphicon glyphicon-ok"></span>
+                <span class="glyphicon glyphicon-remove"></span>
             </div>
         </div>
         <div class="item_pb ok">
