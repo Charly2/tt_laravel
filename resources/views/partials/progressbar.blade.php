@@ -31,6 +31,11 @@
         position: relative;
         display: flex;
         align-items: center;
+        flex-wrap: wrap;
+    }
+    .main_container_pb .main_cont_text,.main_container_pb .continer_pb{
+        width: 100%;
+        display: flex;
     }
     .item_pb{
         flex: 1;
@@ -64,6 +69,27 @@
         top: 5px;
         height: 22px;
         border-radius: 50%;
+        opacity: 0;
+        transition-property:all;
+        transition-duration:3s;
+        transition-delay:3s;
+        transition-timing-function: linear;
+        -webkit-transition-property:all;
+        -webkit-transition-duration:3s;
+        -webkit-transition-delay:3s;
+        -webkit-transition-timing-function: linear;
+    }
+
+    .ok .circle_pb:before,.circle_pb.ok:before{
+        opacity: 1;
+        transition-property:all;
+        transition-duration:3s;
+        transition-delay:3s;
+        transition-timing-function: linear;
+        -webkit-transition-property:all;
+        -webkit-transition-duration:3s;
+        -webkit-transition-delay:3s;
+        -webkit-transition-timing-function: linear;
     }
     .ok .circle_pb span,.circle_pb.ok span{
         display: block;
@@ -73,7 +99,12 @@
         display: none;
     }
 
-    .ok .pb_item:before{
+
+    .pb_item_bar{
+        width: 0;
+        transition: all 1s;
+    }
+    .ok .pb_item_bar{
         content: "";
         position: absolute;
         width: 100%;
@@ -81,6 +112,9 @@
         top: 21px;
         background: #682444fa;
         height: 9px;
+        z-index: 100;
+        transition: all 1s;
+
 
     }
 
@@ -120,48 +154,115 @@
     .ok .pb_item:before{
 
     }
+
+    .main_cont_text_item{
+        flex: 1;
+    }
+
+    .main_cont_text_item h5{
+        font-weight: bold;
+        text-align: center;
+        margin-top: 0;
+    }
 </style>
 
 
 <div class="progrsbar_custom">
 <h4 class="text-center mb-0">Estado Actual</h4>
 <div class="main_container_pb">
-    <div class="circle_pb ok letft">
-        <span class="glyphicon glyphicon-ok"></span>
-    </div>
+
     <div class="continer_pb">
-        <div class="item_pb ok ">
+        <div class="circle_pb ok letft">
+            <span class="glyphicon glyphicon-ok"></span>
+        </div>
+        <div class="item_pb  ">
             <div class="pb_item "></div>
+            <div class="pb_item_bar "></div>
             <div class="circle_pb ">
                 <span class="glyphicon glyphicon-ok"></span>
             </div>
         </div>
-        <div class="item_pb ok">
+        <div class="item_pb ">
             <div class="pb_item "></div>
+            <div class="pb_item_bar"></div>
             <div class="circle_pb ">
                 <span class="glyphicon glyphicon-ok"></span>
             </div>
         </div>
-        <div class="item_pb ok">
+        <div class="item_pb ">
             <div class="pb_item "></div>
+            <div class="pb_item_bar"></div>
             <div class="circle_pb ">
                 <span class="glyphicon glyphicon-remove"></span>
             </div>
         </div>
-        <div class="item_pb ok">
+        <div class="item_pb ">
             <div class="pb_item "></div>
+            <div class="pb_item_bar"></div>
             <div class="circle_pb  anima">
                 <span class="glyphicon glyphicon-refresh"></span>
             </div>
         </div>
         <div class="item_pb">
             <div class="pb_item"></div>
+            <div class="pb_item_bar"></div>
             <div class="circle_pb">
                 <span class="glyphicon glyphicon-ok"></span>
             </div>
+        </div>
+    </div>
+    <div class="main_cont_text">
+        <div class="main_cont_text_item">
+            <h5>Paso 1</h5>
+            {{--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusantium aut consequatur.</p>--}}
+        </div>
+        <div class="main_cont_text_item">
+            <h5>Paso 2</h5>
+            {{--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusantium aut consequatur.</p>--}}
+        </div>
+        <div class="main_cont_text_item">
+            <h5>Paso 3</h5>
+            {{--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusantium aut consequatur.</p>--}}
+        </div>
+        <div class="main_cont_text_item">
+            <h5>Paso 4</h5>
+            {{--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusantium aut consequatur.</p>--}}
+        </div>
+        <div class="main_cont_text_item">
+            <h5>Paso 5</h5>
+            {{--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusantium aut consequatur.</p>--}}
         </div>
     </div>
 </div>
 
 
 </div>
+
+
+<script>
+    var cont = 0;
+    var items =4 ;
+    var $inter;
+    $(document).ready(function (e) {
+        $inter = setInterval(contador,1000)
+    });
+
+
+    function contador(){
+        if (cont < items){
+            $('.item_pb:nth('+cont+')').addClass('ok');
+            cont++
+        }else{
+            clearInterval($inter);
+        }
+
+    }
+
+
+    function limpialoader() {
+        cont = 0;
+        $('.item_pb').each(function (e,t){
+            $(this).removeClass('ok')
+        });
+    }
+</script>

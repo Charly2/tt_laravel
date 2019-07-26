@@ -67,7 +67,12 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-                    <iframe src="{{url('/files/verificapreregistro/'.$valida->id)}}" width="100%" height="600"></iframe>
+                    @if($valida->ext == "jpeg" || $valida->ext == "jpg" || $valida->ext == "png")
+                        <img class="img-responsive" src="{{url('/files/verificapreregistro/'.$valida->id)}}" alt="">
+                    @else
+
+                        <iframe src="{{url('/files/verificapreregistro/'.$valida->id)}}" width="100%" height="600"></iframe>
+                    @endif
                 </div>
             </div>
         </div>

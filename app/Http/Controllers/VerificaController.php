@@ -36,7 +36,8 @@ class VerificaController extends Controller
     public function valida($id){
         $valida =  Prevalidacion::find($id);
         $persona =  $valida->persona();
-        //dd($valida);
+
+
         return view('app.verificapreregistro.valida',['valida'=>$valida,'persona'=>$persona,"notificacion"=>0]);
     }
 
