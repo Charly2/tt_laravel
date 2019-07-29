@@ -10,6 +10,8 @@
 
     <!-- App Css -->
     <link href="{{asset('css/_app.css')}}" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{asset('css/custom.css')}}">
     @stack('header-scripts')
 
     <script

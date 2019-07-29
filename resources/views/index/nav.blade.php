@@ -32,7 +32,7 @@
 
         <div class="navbar-form form-inline my-2 my-lg-0">
             <ul class="nav navbar-nav mr-auto">
-                <li><a >Login</a></li>
+                <li><a href="{{url('/login')}}" >Login</a></li>
             </ul>
         </div>
     </div><!-- /.navbar-collapse -->

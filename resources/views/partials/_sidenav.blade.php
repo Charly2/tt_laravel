@@ -14,12 +14,14 @@
                 <img src="/images/img.jpg" alt="..." class="img-circle profile_img">
             </div>
             <div class="profile_info">
-                <span>Administrador COCENDI,</span>
-                <h2>Juan Carlos Sanchez Trejo</h2>
+                <span style="line-height: 1.8">{{Auth::user()->getTitleOfRole()}},</span>
+                <h2>{{ Auth::user()->name }}</h2>
             </div>
         </div>
         <!-- /menu profile quick info -->
 
+        <br />
+        <br />
         <br />
 
         <!-- sidebar menu -->

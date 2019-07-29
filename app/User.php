@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','rol'
     ];
 
     /**
@@ -36,4 +36,32 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function hasRole($role,$roles){
+
+        if ($this->rol == $role){
+            return true;
+        }
+        foreach ($roles as $rr){
+            if ($this->rol == $rr){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    public function getTitleOfRole(){
+        switch ($this->rol){
+            case 'cocendi':
+                return "Administrador de COCENDI";
+                break;
+            case 'trabajador':
+                return "Trabajador del IPN";
+                break;
+        }
+    }
+
+
 }

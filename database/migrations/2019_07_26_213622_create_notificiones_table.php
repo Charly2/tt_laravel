@@ -19,6 +19,7 @@ class CreateNotificionesTable extends Migration
             $table->integer('tipo');
             $table->string('url');
             $table->integer('estado');
+            $table->string('mensaje');
             $table->timestamps();
         });
     }

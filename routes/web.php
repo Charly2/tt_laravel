@@ -34,21 +34,18 @@ Route::post('/verificapreregistro/rechaza/{id}','VerificaController@rechaza')->n
 Route::get('/verificapreregistro/ver/{id}','VerificaController@valida')->name('verifica.ver');
 
 
-Route::get('/notificaciones',function (){
-    $n = Notificion::all();
+Route::get('/notificaciones/get','NotificacionesController@get_ajax');
+Route::get('/notificaciones','NotificacionesController@index');
 
-    return view('notificaciones.listar',['noti'=>$n]);
-});
-Route::get('/notificaciones/crear',function (){
-    $n = Notificion::create([
-        'usuario' => '1',
-        'tipo' => '1',
-        'url' => 'http://127.0.0.1:8000/verificapreregistro/valida/1',
-        'estado' => '1',
-    ]);
 
-    dd($n);
+
+Route::get('/mail',function (){
+    Mail::send('mails.prueba',['msg' => "Hola como estas??"],function ($m){
+        $m->to('papapitufo10@gmail.com','Juan Carlos')->subject('Prueba de email');
+    });
 });
+
+
 
 
 

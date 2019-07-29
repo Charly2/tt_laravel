@@ -28,7 +28,6 @@ class Persona extends Model
 
     public function setDireccion($data){
         $dir =Direccion::create($data);
-
         $this->direccion =  $dir->id;;
         $this->save();
     }

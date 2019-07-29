@@ -9,6 +9,12 @@ class VerificaController extends Controller
 {
     //
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('roles:cocendi');
+    }
+
 
     public function index(){
         $totales = [Prevalidacion::where('estado',1)->get()->count(),Prevalidacion::where('estado',2)->get()->count(),Prevalidacion::where('estado',3)->get()->count()];
@@ -38,6 +44,8 @@ class VerificaController extends Controller
         $persona =  $valida->persona();
 
 
+
+
         return view('app.verificapreregistro.valida',['valida'=>$valida,'persona'=>$persona,"notificacion"=>0]);
     }
 
@@ -52,8 +60,11 @@ class VerificaController extends Controller
     public function validapost($id){
         $prereg = Prevalidacion::find($id);
         $persona = $prereg->persona();
-        /*print_r($prereg);
-        print_r($persona);*/
+
+
+
+
+
 
         $prereg->estado = 2;
         $prereg->save();
