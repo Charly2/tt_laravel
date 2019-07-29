@@ -21,6 +21,7 @@ class CreatePrevalidacionTable extends Migration
             $table->string('ext')->nullable();
             $table->string('num_emp')->nullable();
             $table->string('ct')->nullable();
+            $table->string('email')->nullable();
             $table->integer('estado')->nullable();
             $table->timestamps();
         });

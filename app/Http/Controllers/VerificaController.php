@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Prevalidacion;
+use App\Trabajador;
 use Illuminate\Http\Request;
 
 class VerificaController extends Controller
@@ -66,6 +67,21 @@ class VerificaController extends Controller
 
 
 
+
+        $trabajador = Trabajador::create([
+            'persona' => $persona->id,
+            'numtrabajador'=> $prereg->num_emp,
+            'centrodetrabajo'=> $prereg->ct
+        ]);
+
+
+        echo "<br>";
+        print_r($trabajador);
+
+
+        //$persona->save();
+
+
         $prereg->estado = 2;
         $prereg->save();
 
@@ -73,7 +89,9 @@ class VerificaController extends Controller
 
 
 
-        return view('app.verificapreregistro.valida',['valida'=>$prereg,'persona'=>$persona,"notificacion"=>1]);
+
+
+        //return view('app.verificapreregistro.valida',['valida'=>$prereg,'persona'=>$persona,"notificacion"=>1]);
 
     }
 

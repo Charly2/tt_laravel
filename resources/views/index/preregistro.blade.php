@@ -62,6 +62,17 @@
                                     @endif
                                 </div>
                             </div>
+                            <div class="col-md-4">
+                                <div class="form-group ">
+                                    <label>Email:</label>
+                                    <input type="text" value="{{old('email')}}" name="email" class="form-control autoupdate req_this {{$errors->has('email')?'is-invalid':''}}"     placeholder="Escribe aquí tu email" />
+                                    @if($errors->has('email'))
+                                        <div class="invalid-feedback">
+                                            {{$errors->first('email')}}
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
                         </div>
 
 

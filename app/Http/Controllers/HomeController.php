@@ -79,7 +79,8 @@ class HomeController extends Controller
             "edocivil" => "required",
             "foto_pre" => "required",
             "num_emp" => "required",
-            "ct" => "required"
+            "ct" => "required",
+            "email" => "required"
 
         ], [
             'nombre.required' => 'El campo nombre es obligatorio',
@@ -92,8 +93,11 @@ class HomeController extends Controller
             "edocivil.required" => "El campo estado civil es obligatorio",
             "num_emp.required" => "El campo número de empleado es obligatorio",
             "ct.required" => "El campo de centro de trabajo es obligatorio",
-            "foto_pre.required" => "Debes adjuntar una fotografiá de tu credencial para inicial el proceso"
+            "foto_pre.required" => "Debes adjuntar una fotografiá de tu credencial para inicial el proceso",
+            "email.required" => "El campo email es obligatorio"
         ]);
+
+
 
 
         $persona = Persona::create($data);
@@ -102,8 +106,11 @@ class HomeController extends Controller
             'persona' => $persona->id,
             'estado' => 1,
             'num_emp' => $data['num_emp'],
-            'ct' => $data['ct']
+            'ct' => $data['ct'],
+            'email' => $data['email']
         ]);
+
+
 
 
         if (request()->hasFile('foto_pre')) {

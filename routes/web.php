@@ -28,8 +28,8 @@ Route::post('/preregistro','HomeController@save')->name('index.preregistro_post'
 Route::get('/verificapreregistro/','VerificaController@index')->name('verifica.index');
 Route::get('/verificapreregistro/cancelados','VerificaController@cancelados')->name('verifica.cancelados');
 Route::get('/verificapreregistro/aprobados','VerificaController@aprobados')->name('verifica.aprobados');
-Route::get('/verificapreregistro/valida/{id}','VerificaController@valida')->name('verifica.valida');
-Route::post('/verificapreregistro/valida/{id}','VerificaController@validapost')->name('verifica.validapost');
+//Route::get('/verificapreregistro/valida/{id}','VerificaController@valida')->name('verifica.valida');
+Route::get('/verificapreregistro/valida/{id}','VerificaController@validapost')->name('verifica.validapost');
 Route::post('/verificapreregistro/rechaza/{id}','VerificaController@rechaza')->name('verifica.rechaza');
 Route::get('/verificapreregistro/ver/{id}','VerificaController@valida')->name('verifica.ver');
 

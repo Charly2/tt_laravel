@@ -17,6 +17,7 @@ class Persona extends Model
         'lugarnac',
         'estadocivil',
         'curp',
+        'email',
         'gruposan',
         'direccion',
         'genero'
@@ -35,6 +36,12 @@ class Persona extends Model
 
     public function nombrecompleto(){
         return $this->nombre." ".$this->appaterno." ".$this->apmaterno;
+    }
+
+    public function updateMail($newemail){
+        $this->email = $newemail;
+        dd($this);
+        $this->save();
     }
 
 }
