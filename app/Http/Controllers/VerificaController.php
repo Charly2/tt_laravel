@@ -6,6 +6,7 @@ use App\Prevalidacion;
 use App\Trabajador;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class VerificaController extends Controller
 {
@@ -64,7 +65,7 @@ class VerificaController extends Controller
         $persona = $prereg->persona();
 
 
-        if ($prereg->estado ==1){
+        if ($prereg->estado ==1 ||1){
             $trabajador = Trabajador::create([
                 'persona' => $persona->id,
                 'numtrabajador'=> $prereg->num_emp,
@@ -82,6 +83,14 @@ class VerificaController extends Controller
             $user->save();
 
 
+
+
+            $mail = Mail::send('mails.prueba',['persona' => $persona],function ($m){
+                $m->to('papapitufo10@gmail.com','Juan Carlos')->subject('Prueba de email');
+            });
+
+
+           //return view('mails.prueba',['persona' => $persona]);
 
 
             return json_encode(['estado'=>1]);
