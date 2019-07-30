@@ -16,7 +16,7 @@ use App\Persona;
 });*/
 
 use App\Notificion;
-
+use Illuminate\Support\Facades\Mail;
 
 
 Route::get('/','HomeController@index')->name('index.index');
@@ -38,10 +38,18 @@ Route::get('/notificaciones/get','NotificacionesController@get_ajax');
 Route::get('/notificaciones','NotificacionesController@index');
 
 
+Route::get('/completeinformacion','TrabajadorController@completainfo');
+Route::get('/othermain','TrabajadorController@othermain');
 
 
+Route::get('/mail',function (){
+    $persona = Persona::all()->first();
 
-
+    //dd($persona);
+    Mail::send('mails.prueba',['persona' => $persona],function ($m){
+        $m->to('papapitufo10@gmail.com','Juan Carlos')->subject('Prueba de email');
+    });
+});
 
 
 

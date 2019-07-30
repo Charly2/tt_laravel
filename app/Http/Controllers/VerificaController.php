@@ -69,7 +69,8 @@ class VerificaController extends Controller
             $trabajador = Trabajador::create([
                 'persona' => $persona->id,
                 'numtrabajador'=> $prereg->num_emp,
-                'centrodetrabajo'=> $prereg->ct
+                'centrodetrabajo'=> $prereg->ct,
+                'estado' => 1
             ]);
             $prereg->estado = 2;
             $prereg->save();

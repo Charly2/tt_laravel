@@ -52,6 +52,11 @@ class User extends Authenticatable
     }
 
 
+
+    public function getTrabajador(){
+        return Trabajador::find($this->entidad);
+    }
+
     public function getTitleOfRole(){
         switch ($this->rol){
             case 'cocendi':
