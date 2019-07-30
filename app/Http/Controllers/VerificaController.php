@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Prevalidacion;
 use App\Trabajador;
+use App\User;
 use Illuminate\Http\Request;
 
 class VerificaController extends Controller
@@ -63,48 +64,49 @@ class VerificaController extends Controller
         $persona = $prereg->persona();
 
 
+        if ($prereg->estado ==1){
+            $trabajador = Trabajador::create([
+                'persona' => $persona->id,
+                'numtrabajador'=> $prereg->num_emp,
+                'centrodetrabajo'=> $prereg->ct
+            ]);
+            $prereg->estado = 2;
+            $prereg->save();
+
+            $user = User::create([
+                'name' => $persona->nombre , 'email'=>$persona->email,'rol'=>'trabajador', 'password'=> bcrypt($persona->nombre),
+            ]);
+
+            $user->entidad = $trabajador->id;
+
+            $user->save();
 
 
 
 
-
-        $trabajador = Trabajador::create([
-            'persona' => $persona->id,
-            'numtrabajador'=> $prereg->num_emp,
-            'centrodetrabajo'=> $prereg->ct
-        ]);
+            return json_encode(['estado'=>1]);
+        }else{
+            return json_encode(['estado'=>0]);
+        }
 
 
-        echo "<br>";
-        print_r($trabajador);
-
-
-        //$persona->save();
-
-
-        $prereg->estado = 2;
-        $prereg->save();
-
-
-
-
-
-
-
-        //return view('app.verificapreregistro.valida',['valida'=>$prereg,'persona'=>$persona,"notificacion"=>1]);
 
     }
 
     public function rechaza($id){
         $prereg = Prevalidacion::find($id);
         $persona = $prereg->persona();
-        /*print_r($prereg);
-        print_r($persona);*/
 
-        $prereg->estado = 3;
-        $prereg->save();
+        if ($prereg->estado == 1){
 
-        return view('app.verificapreregistro.valida',['valida'=>$prereg,'persona'=>$persona,"notificacion"=>2]);
+            $prereg->estado = 3;
+            $prereg->save();
+            return json_encode(['estado'=>1]);
+
+        }else{
+            return json_encode(['estado'=>0]);
+        }
+
 
     }
 
