@@ -19,12 +19,12 @@ class Trabajador extends Model
         'horaentrada',
         'centrodetrabajo',
         'telefonooficina',
-        'extencionoficina',
+        'extencionoficina','estado'
     ];
 
 
     public function persona(){
-        return Direccion::find($this->direccion);
+        return Persona::find($this->persona);
     }
 
     public function setPersona($data){

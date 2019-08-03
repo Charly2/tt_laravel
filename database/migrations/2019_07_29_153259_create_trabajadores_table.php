@@ -24,6 +24,7 @@ class CreateTrabajadoresTable extends Migration
             $table->string('centrodetrabajo')->nullable();
             $table->string('telefonooficina')->nullable();
             $table->string('extencionoficina')->nullable();
+            $table->integer('estado')->nullable();
             $table->timestamps();
         });
     }
