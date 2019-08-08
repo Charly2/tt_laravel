@@ -4,3 +4,18 @@
     display: block;
     padding: 3px 0!important;
 }
+
+.wizard .nav-tabs li.active a{
+    background: #692445;
+    color:white;
+    padding: 5px 10px 0px;
+    text-align: center;
+}
+
+.wizard .nav-tabs li a span{
+    font-size: 1.5em;
+}
+.wizard .nav-tabs li a {
+    text-align: center;
+    padding: 5px 10px 0px;
+}

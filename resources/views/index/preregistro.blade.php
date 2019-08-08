@@ -166,7 +166,7 @@
                             <div class="col-md-4">
                                 <div class="form-group ">
                                     <label>Estado Civil*:</label>
-                                    <select type="text" name="edocivil"  class="form-control autoupdate req_this" id="edocivil" data-valido="validaedoCivil" >
+                                    <select type="text" name="estadocivil"  class="form-control autoupdate req_this" id="edocivil" data-valido="validaedoCivil" >
                                         <option value="casado" >Casada</option>
                                         <option value="soltero" >Soltero</option>
                                         <option value="viudo" >Viudo</option>

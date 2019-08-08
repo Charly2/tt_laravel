@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Persona extends Model
 {
 
-    protected $dateFormat = 'Y-m-d';
+    //protected $dateFormat = 'Y-m-d';
     protected $fillable =[
         'nombre',
         'appaterno',
@@ -25,6 +25,13 @@ class Persona extends Model
 
     public function direccion(){
         return Direccion::find($this->direccion);
+    }
+
+    public function validainfogeneral(){
+        if($this->gruposan and
+        $this->telefono_fijo and
+        $this->telefono_cel ) return true;
+        else return false;
     }
 
     public function setDireccion($data){
