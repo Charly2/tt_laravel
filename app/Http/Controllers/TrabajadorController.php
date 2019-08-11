@@ -51,9 +51,13 @@ class TrabajadorController extends Controller
         $persona = $trabajador->persona();
 
 
+        $grupssan = ['A+','A-','O+','O-','B+','B-','AB+','AB-'];
 
 
-        return "Hola";
+
+        return view('app.completar_info.info_direccion',['usuario'=>$usuario,'trabajador'=>$trabajador,'persona'=>$persona,"gruposan"=>$grupssan]);
+
+
     }
 
 
@@ -64,6 +68,46 @@ class TrabajadorController extends Controller
 
     public function completainfo_general(){
 
+        $data = request()->validate([
+            'gruposan' => 'required',
+            "telefono_fijo" => "required|digits_between:8,10",
+            "telefono_cel" => "required|digits_between:8,10"
+
+        ], [
+            'gruposan.required' => 'El campo Grupo sanguíneo es obligatorio',
+            "telefono_fijo.required" => "El campo Teléfono fijo es obligatorio",
+            "telefono_cel.required" => "El campo Teléfono celular es obligatorio",
+            "telefono_cel.digits_between" => "El campo Teléfono celular debe ser un número entre 8 y 10 caracteres",
+            "telefono_fijo.digits_between" => "El campo Teléfono celular debe ser un número entre 8 y 10 caracteres",
+
+        ]);
+
+
+
+
+        $usuario = Auth::user();
+        $trabajador = Auth::user()->getTrabajador();
+
+
+        $persona = Persona::find($trabajador->persona);
+
+
+
+
+
+        $persona->gruposan=$data['gruposan'];
+        $persona->telefono_fijo=$data['telefono_fijo'];
+        $persona->telefono_cel=$data['telefono_cel'];
+
+        $persona->save();
+        return redirect('/completeinformacion_direccion');
+
+    }
+
+    public function completeinformacion_direccion_post(){
+
+
+        dd(request()->all());
         $data = request()->validate([
             'gruposan' => 'required',
             "telefono_fijo" => "required|digits_between:8,10",

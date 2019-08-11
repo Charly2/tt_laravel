@@ -14,28 +14,34 @@
             <div class="x_content">
 
                 <div class="wizard">
+
                     <div class="wizard-inner">
                         <div class="connecting-line"></div>
                         <ul class="nav nav-tabs" role="tablist">
-
-                            <li role="presentation" class="active">
+                            <li role="presentation" class=" active">
                                 <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
-                            <span class="round-tab">
-                                <i class="glyphicon glyphicon-folder-open"></i>
-                            </span>
+                                    <span class="round-tab">
+                                        <i class="glyphicon glyphicon-user "></i>
+                                    </span>
                                     <p>Información general</p>
                                 </a>
                             </li>
-
-                            <li role="presentation" class="disabled">
+                            <li role="presentation" class="disabled" >
                                 <a >
-                            <span class="round-tab">
-                                <i class="glyphicon glyphicon-pencil"></i>
-                            </span>
-                                    <p>Información general</p>
+                                    <span class="round-tab">
+                                        <i class="glyphicon glyphicon-home"></i>
+                                    </span>
+                                    <p>Dirección</p>
                                 </a>
                             </li>
-
+                            <li role="presentation" class="disabled" >
+                                <a >
+                                    <span class="round-tab">
+                                        <i class="glyphicon glyphicon-briefcase"></i>
+                                    </span>
+                                    <p>Centro de Trabajo</p>
+                                </a>
+                            </li>
                         </ul>
                     </div>
 
@@ -166,7 +172,12 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             @if ($errors->any())
-                                                {{ implode('', $errors->all('<div>:message</div>')) }}
+                                                <div class="alert alert-danger alert-dismissible fade show in" role="alert">
+                                                    <strong>Error!</strong> No se pudo guardar la información ya que algunos campos estan incorrectos.
+                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
                                             @endif
                                         </div>
                                     </div>

@@ -28,6 +28,7 @@ class Persona extends Model
     }
 
     public function validainfogeneral(){
+        //return false;
         if($this->gruposan and
         $this->telefono_fijo and
         $this->telefono_cel ) return true;

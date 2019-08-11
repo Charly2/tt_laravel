@@ -41,6 +41,7 @@ Route::get('/notificaciones','NotificacionesController@index');
 Route::get('/completeinformacion','TrabajadorController@completainfo');
 Route::get('/completeinformacion_direccion','TrabajadorController@completeinformacion_direccion');
 Route::post('/completeinformacion_general','TrabajadorController@completainfo_general');
+Route::post('/completeinformacion_direccion','TrabajadorController@completeinformacion_direccion_post');
 Route::get('/othermain','TrabajadorController@othermain');
 
 
