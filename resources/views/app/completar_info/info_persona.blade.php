@@ -19,7 +19,7 @@
                         <div class="connecting-line"></div>
                         <ul class="nav nav-tabs" role="tablist">
                             <li role="presentation" class=" active">
-                                <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
+                                <a >
                                     <span class="round-tab">
                                         <i class="glyphicon glyphicon-user "></i>
                                     </span>

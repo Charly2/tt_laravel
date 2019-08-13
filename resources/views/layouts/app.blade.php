@@ -41,6 +41,8 @@
 
 
 <script src="{{asset('js/_app.js')}}"></script>
+<link href="{{asset('css/datepicker.min.css')}}" rel="stylesheet" type="text/css">
+<script src="{{asset('js/datepicker.min.js')}}"></script>
 @include('partials._notification')
 @stack('scripts')
 

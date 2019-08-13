@@ -29,12 +29,21 @@
             <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                    <li><a href="{{url('/verificapreregistro')}}"><i class="fa fa-check"></i> Valida Preregistro</a>
+                    <li>
+                        <a href="{{url('/verificapreregistro')}}"><i class="fa fa-check"></i> Valida Preregistro</a>
                     </li>
-                    <li><a><i class="fa fa-cogs"></i>Settings <span class="fa fa-chevron-down"></span></a>
+                    <li>
+                        <a><i class="fa fa-cogs"></i>Inscripciones <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="#">Role Managment</a></li>
-                            <li><a href="#">Configuration</a></li>
+                            <li><a href="{{url('/inscripciones')}}">Listar procesos</a></li>
+                            <li><a href="#">Iniciar proceso</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a><i class="fa fa-refresh"></i>Reinscripciones <span class="fa fa-chevron-down "></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href="#">Registrar Menor</a></li>
+                            <li><a href="#">Listar </a></li>
                         </ul>
                     </li>
                 </ul>

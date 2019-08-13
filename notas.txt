@@ -1,0 +1,3 @@
+EstadoTrabajdor
+    1 = Sin completar informacion
+    2 = Completar informacion

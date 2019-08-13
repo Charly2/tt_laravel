@@ -254,6 +254,8 @@
             cont++
         }else{
             clearInterval($inter);
+             cont = 0;
+             items =4 ;
         }
 
     }

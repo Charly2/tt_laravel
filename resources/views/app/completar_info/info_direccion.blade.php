@@ -19,7 +19,7 @@
                         <div class="connecting-line"></div>
                         <ul class="nav nav-tabs" role="tablist">
                             <li role="presentation" class="disabled">
-                                <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
+                                <a >
                                     <span class="round-tab">
                                         <i class="glyphicon glyphicon-user "></i>
                                     </span>
@@ -61,7 +61,7 @@
                                             <div class="form-group">
                                                 <label class="control-label" >Calle:</label>
                                                 <input id="calle" name="calle" type="text" class="form-control {{$errors->has('calle')?'has-error':''}}"  value="{{old('calle')}}" >
-                                                @if($errors->has('telefono_cel'))
+                                                @if($errors->has('calle'))
                                                     <span class="help-block"> {{$errors->first('calle')}}</span>
                                                 @endif
                                             </div>
@@ -129,11 +129,11 @@
 
 
                                     <h4 >Geolocalización</h4>
-                                    {{--<div class="row">
+                                    <div class="row">
                                         <div class="col-md-12">
                                             <div id="map"></div>
                                         </div>
-                                    </div>--}}
+                                    </div>
 
 
                                     <div class="row">
@@ -184,6 +184,7 @@
         #map ,#map_canvas{
             height: 400px;
             width: 100%;
+            background: #f5f5f591;
         }
     </style>
 
@@ -213,29 +214,38 @@
                         $('#colonias').html($_html).trigger('change');
                         console.log($_html);
 
+                        setMaps();
 
 
-                        /*GMaps.geocode({
-                            address:getdir(),
-                            callback: function(results, status){
-                                console.dir(status)
-                                console.dir(results)
-                                if(status=='OK'){
-                                    var latlng = results[0].geometry.location;
-                                    map.setCenter(latlng.lat(), latlng.lng());
-                                    map.addMarker({
-                                        lat: latlng.lat(),
-                                        lng: latlng.lng()
-                                    });
-                                }
-                            }
-                        });*/
 
 
                     });
 
             });
         });
+
+
+        $('#colonias').change(function () {
+            setMaps();
+        });
+
+        function setMaps() {
+            /*GMaps.geocode({
+                address:getdir(),
+                callback: function(results, status){
+                    console.dir(status)
+                    console.dir(results)
+                    if(status=='OK'){
+                        var latlng = results[0].geometry.location;
+                        map.setCenter(latlng.lat(), latlng.lng());
+                        map.addMarker({
+                            lat: latlng.lat(),
+                            lng: latlng.lng()
+                        });
+                    }
+                }
+            });*/
+        }
 
 
 
@@ -253,8 +263,8 @@
 
 
 
-    {{--<script type="text/javascript" src="//maps.google.com/maps/api/js?key=AIzaSyDaKaRdamRqFDTwe0sCgo0taIlxAfxjPis"></script>--}}
-    {{--<script src="{{asset('js/gmaps.js')}}"></script>
+    {{--<script type="text/javascript" src="//maps.google.com/maps/api/js?key=AIzaSyDaKaRdamRqFDTwe0sCgo0taIlxAfxjPis"></script>
+    <script src="{{asset('js/gmaps.js')}}"></script>
 
     <script>
         var map;
