@@ -20,8 +20,10 @@ class InscripcionesController extends Controller
 
     public function index(){
 
+        $alumnos[] = ['id'=>1,'estado'=>4];
+        $alumnos[] = ['id'=>2,'estado'=>2];
 
-        return view('inscripciones.index');
+        return view('inscripciones.index',['alumnos'=>$alumnos]);
 
     }
 }
