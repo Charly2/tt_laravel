@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CentraSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(NotificaionSeeder::class);
+        $this->call(CendiSeeder::class);
 
     }
 }

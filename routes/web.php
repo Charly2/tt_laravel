@@ -47,8 +47,11 @@ Route::post('/completeinformacion_trabajo','TrabajadorController@completeinforma
 Route::get('/inscripciones','InscripcionesController@index');
 
 
+Route::get('/procesoinscripcion','ProcesoController@index');
+
+
 Route::get('/prueba',function (){
-    dd(\App\Trabajador::all());
+
 });
 
 

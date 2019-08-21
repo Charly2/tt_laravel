@@ -36,7 +36,7 @@
                         <a><i class="fa fa-cogs"></i>Inscripciones <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><a href="{{url('/inscripciones')}}">Listar procesos</a></li>
-                            <li><a href="#">Iniciar proceso</a></li>
+                            <li><a href="{{url('/procesoinscripcion')}}">Iniciar proceso</a></li>
                         </ul>
                     </li>
                     <li>
