@@ -2,6 +2,26 @@
 
 @section('content')
 
+    <style>
+        .hover_S{
+            background-image: url("/images/bitmap2.png")!important;
+            background-size: cover!important;
+            position: relative;
+        }
+        .hover_S * {
+            position: relative;
+            z-index: 100;
+        }
+        .hover_S:before{
+            content: "";
+            width: 100%;
+            height: 100%;
+            background: rgba(45, 66, 86, .8);
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
 
     <div class="">
         <div class="page-title">
@@ -21,7 +41,7 @@
                     <div class="x_content">
 
                         <div class="bs-example" data-example-id="simple-jumbotron">
-                            <div class="jumbotron bg-polix">
+                            <div class="jumbotron bg-poli hover_S">
                                 <h1 class="text-center">Inicia tu Inscripcción</h1>
                                 <p>Para poder iniciar tu inscripcción debes tener a la mano los siguientes documentos:</p>
                                 <p>- Documento tipo 1</p>
