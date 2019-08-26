@@ -51,7 +51,7 @@
 
                                 <div class="row">
                                     <div class="col-md-4 col-md-offset-4">
-                                        <button class="btn btn-success btn-block" style="line-height: 1.8">Iniciar</button>
+                                        <a href="{{url('/procesoinscripcion/menor')}}" class="btn btn-success btn-block" style="line-height: 1.8">Iniciar</a>
                                     </div>
                                 </div>
                             </div>

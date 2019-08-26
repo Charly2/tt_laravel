@@ -48,6 +48,8 @@ Route::get('/inscripciones','InscripcionesController@index');
 
 
 Route::get('/procesoinscripcion','ProcesoController@index');
+Route::get('/procesoinscripcion/menor','ProcesoController@menor');
+Route::post('/procesoinscripcion/menor','ProcesoController@menorpost');
 
 
 Route::get('/prueba',function (){
