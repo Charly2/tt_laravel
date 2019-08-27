@@ -48,6 +48,7 @@ Route::get('/inscripciones','InscripcionesController@index');
 
 
 Route::get('/procesoinscripcion','ProcesoController@index');
+Route::get('/procesoinscripcion/inicio','ProcesoController@inicia');
 Route::get('/procesoinscripcion/menor','ProcesoController@menor');
 Route::post('/procesoinscripcion/menor','ProcesoController@menorpost');
 

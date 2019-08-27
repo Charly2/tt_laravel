@@ -57,7 +57,7 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label class="control-label" >Nombre:</label>
-                                                    <input type="text" class="form-control {{$errors->has('nombre')?'is-invalid':''}}" name="nombre" value="">
+                                                    <input type="text" class="form-control {{$errors->has('nombre')?'has-error':''}}" name="nombre" value="{{old('nombre')}}">
                                                     @if($errors->has('nombre'))
                                                         <span class="help-block"> {{$errors->first('nombre')}}</span>
                                                     @endif
@@ -66,7 +66,7 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label class="control-label" >Apellido paterno:</label>
-                                                    <input type="text" class="form-control {{$errors->has('appaterno')?'is-invalid':''}}"  name="appaterno" value="">
+                                                    <input type="text" class="form-control {{$errors->has('appaterno')?'has-error':''}}"  name="appaterno" value="{{old('appaterno')}}">
                                                     @if($errors->has('appaterno'))
                                                         <span class="help-block"> {{$errors->first('appaterno')}}</span>
                                                     @endif
@@ -75,7 +75,7 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label class="control-label" >Apellido paterno:</label>
-                                                    <input type="text" class="form-control {{$errors->has('apmaterno')?'is-invalid':''}}"  name="apmaterno" value="">
+                                                    <input type="text" class="form-control {{$errors->has('apmaterno')?'has-error':''}}"  name="apmaterno" value="{{old('apmaterno')}}">
                                                     @if($errors->has('apmaterno'))
                                                         <span class="help-block"> {{$errors->first('apmaterno')}}</span>
                                                     @endif
@@ -86,7 +86,7 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label class="control-label" >Fecha de nacimiento*:</label>
-                                                    <input type="text" value="{{old('fechanac')}}"  name="fechanac" class="form-control fecha  {{$errors->has('fechanac')?'is-invalid':''}}  " placeholder="dd/mm/aaaa" />
+                                                    <input type="text" value="{{old('fechanac')}}"  name="fechanac" class="form-control fecha  {{$errors->has('fechanac')?'has-error':''}}  " placeholder="dd/mm/aaaa" />
                                                     @if($errors->has('fechanac'))
                                                         <span class="help-block"> {{$errors->first('fechanac')}}</span>
                                                     @endif
@@ -108,8 +108,10 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label class="control-label" >CURP:</label>
-                                                    <input type="text" class="form-control " value="" >
-                                                    <span class="help-block">Please correct the error</span>
+                                                    <input type="text"  class="form-control {{$errors->has('curp')?'has-error':''}} " name="curp" value="{{old('curp')}}" >
+                                                    @if($errors->has('curp'))
+                                                        <span class="help-block"> {{$errors->first('curp')}}</span>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -117,17 +119,19 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label class="control-label" >Género:</label>
-                                                    <input type="text" class="form-control "  value="" >
-                                                    <span class="help-block">Please correct the error</span>
+                                                    <select  name="genero" class="form-control">
+                                                        <option value="masculino"  {{ old('genero') == "masculino" ? ' selected' : '' }} >Masculino</option>
+                                                        <option value="femenino"  {{ old('genero') == "femenino" ? ' selected' : '' }} >Femenino</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label class="control-label" >Grupo sanguíneo*:</label>
                                                     <select  name="gruposan" class="form-control">
-                                                        @foreach([] as $centro)
-                                                            <option value="{{ $centro }}"{{ old('gruposan') == $centro ? ' selected' : '' }}>
-                                                                {{ $centro }}
+                                                        @foreach($gruposan as $grupo)
+                                                            <option value="{{ $grupo }}" {{ old('gruposan') == $grupo ? ' selected' : '' }}>
+                                                                {{ $grupo }}
                                                             </option>
                                                         @endforeach
                                                     </select>

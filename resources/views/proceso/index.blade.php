@@ -51,7 +51,10 @@
 
                                 <div class="row">
                                     <div class="col-md-4 col-md-offset-4">
-                                        <a href="{{url('/procesoinscripcion/menor')}}" class="btn btn-success btn-block" style="line-height: 1.8">Iniciar</a>
+                                        <form action="{{url('/procesoinscripcion/inicio')}}" method="post">
+                                            {{csrf_field()}}
+                                            <button type="submit" href="" class="btn btn-success btn-block" style="line-height: 1.8">Iniciar</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
