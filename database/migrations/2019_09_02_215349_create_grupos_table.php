@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProcesoTable extends Migration
+class CreateGruposTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateProcesoTable extends Migration
      */
     public function up()
     {
-        Schema::create('proceso', function (Blueprint $table) {
+        Schema::create('grupos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('persona')->nullable();
-            $table->foreign('persona'21)00->references('id')->on('personas')->onDelete('set null');
-
-
-
-
+            $table->string("nombre");
+            $table->unsignedInteger('next');
+            $table->integer('cupo');
+            $table->unsignedInteger('cendi');
+            $table->foreign('cendi')->references('id')->on('cendi');
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ class CreateProcesoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('proceso');
+        Schema::dropIfExists('grupos');
     }
 }

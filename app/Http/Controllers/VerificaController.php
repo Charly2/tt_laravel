@@ -41,7 +41,7 @@ class VerificaController extends Controller
     }
 
 
-
+  
     public function valida($id){
         $valida =  Prevalidacion::find($id);
         $persona =  $valida->persona();

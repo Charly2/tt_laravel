@@ -14,7 +14,7 @@ class CreateAlumnoTable extends Migration
     public function up()
     {
         Schema::create('alumno', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->unsignedInteger('persona')->nullable();
             $table->foreign('persona')->references('id')->on('personas')->onDelete('set null');
 

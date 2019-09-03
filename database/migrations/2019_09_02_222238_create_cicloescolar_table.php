@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePersonaAutorizadaTable extends Migration
+class CreateCicloescolarTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreatePersonaAutorizadaTable extends Migration
      */
     public function up()
     {
-        Schema::create('persona_autorizada', function (Blueprint $table) {
+        Schema::create('cicloescolar', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('persona')->nullable();
-            $table->foreign('persona')->references('id')->on('personas')->onDelete('set null');
-            $table->string('parentesco');
+            $table->string('inicio');
+            $table->string('fin');
+
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreatePersonaAutorizadaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('persona_autorizada');
+        Schema::dropIfExists('cicloescolar');
     }
 }

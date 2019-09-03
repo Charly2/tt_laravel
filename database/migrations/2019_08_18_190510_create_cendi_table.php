@@ -14,7 +14,7 @@ class CreateCendiTable extends Migration
     public function up()
     {
         Schema::create('cendi', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->string('nombre');
             $table->string('telefono');
             $table->string('directora');
