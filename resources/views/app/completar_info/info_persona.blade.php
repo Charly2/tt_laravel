@@ -42,6 +42,14 @@
                                     <p>Centro de Trabajo</p>
                                 </a>
                             </li>
+                            <li role="presentation" class=" disabled" >
+                                <a >
+                                    <span class="round-tab">
+                                        <i class="glyphicon glyphicon-file"></i>
+                                    </span>
+                                    <p>Documentos</p>
+                                </a>
+                            </li>
                         </ul>
                     </div>
 

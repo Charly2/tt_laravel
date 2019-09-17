@@ -166,6 +166,8 @@ class TrabajadorController extends Controller
         return view('app.completar_info.info_centrodetrabajo',['usuario'=>$usuario,'trabajador'=>$trabajador,'persona'=>$persona]);
 
     }
+
+
     public function completeinformacion_trabajo_post(){
 
         $data = request()->validate([
@@ -211,9 +213,29 @@ class TrabajadorController extends Controller
 
 
 
-        return redirect('/dashboard');
+        return redirect('/completeinformacion_documentos');
 
 
+
+    }
+
+
+
+    public function completeinformacion_documentos(){
+        $usuario = Auth::user();
+        $trabajador = Auth::user()->getTrabajador();
+        $persona = Persona::find($trabajador->persona);
+
+        if ($trabajador->estado == 2){
+            return redirect('/dashboard');
+        }
+
+
+        
+        return view('app.completar_info.info_documentos',['usuario'=>$usuario,'trabajador'=>$trabajador,'persona'=>$persona]);
+    }
+
+    public function completeinformacion_documentos_post(){
 
     }
 

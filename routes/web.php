@@ -41,9 +41,11 @@ Route::get('/notificaciones','NotificacionesController@index');
 Route::get('/completeinformacion','TrabajadorController@completainfo');
 Route::get('/completeinformacion_direccion','TrabajadorController@completeinformacion_direccion');
 Route::get('/completeinformacion_trabajo','TrabajadorController@completeinformacion_trabajo');
+Route::get('/completeinformacion_documentos','TrabajadorController@completeinformacion_documentos');
 Route::post('/completeinformacion_general','TrabajadorController@completainfo_general');
 Route::post('/completeinformacion_direccion','TrabajadorController@completeinformacion_direccion_post');
 Route::post('/completeinformacion_trabajo','TrabajadorController@completeinformacion_trabajo_post');
+Route::post('/completeinformacion_documentos','TrabajadorController@completeinformacion_documentos_post');
 Route::get('/inscripciones','InscripcionesController@index');
 
 

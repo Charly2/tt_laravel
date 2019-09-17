@@ -34,7 +34,7 @@
                                     <p>Dirección</p>
                                 </a>
                             </li>
-                            <li role="presentation" class=" active" >
+                            <li role="presentation" class="disabled" >
                                 <a >
                                     <span class="round-tab">
                                         <i class="glyphicon glyphicon-briefcase"></i>
@@ -42,7 +42,7 @@
                                     <p>Centro de Trabajo</p>
                                 </a>
                             </li>
-                            <li role="presentation" class=" disabled" >
+                            <li role="presentation" class=" active" >
                                 <a >
                                     <span class="round-tab">
                                         <i class="glyphicon glyphicon-file"></i>
@@ -73,76 +73,28 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label class="control-label" >Puesto*:</label>
-                                                <select  name="puesto" class="form-control">
-                                                    <option value="DOCENTE">DOCENTE</option>
-                                                    <option value="PAAE">PAAE</option>
-                                                </select>
+                                                <label class="control-label" >Número exterior:</label>
+                                                <input type="file" name="img" class="file">
+                                                <div class="input-group asd564">
+                                                    <input type="text" class="form-control asda75 file_style"  placeholder="Upload Image">
+                                                    <span class="input-group-btn" style="display: block;width: 25%;height: 38px;">
+                                                        <button class="browse btn btn-primary q516" type="button"><i class="glyphicon glyphicon-search"></i> Browse</button>
+                                                    </span>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label class="control-label" >Grado:</label>
-                                                <select  name="ocupacion" class="form-control">
-                                                    <option value="Normal" {{ old('ocupacion') == "Normal" ? ' selected' : '' }}>Normal</option>
-                                                    <option value="Directivo" {{ old('ocupacion') == "Directivo" ? ' selected' : '' }}>Directivo</option>
-
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-4">
-
-                                            <div class="form-group">
-                                                <label class="control-label" >Hora de entrada:</label>
-                                                <input autocomplete="off" name="horaentrada" id="horae" type="text" class="form-control hora {{$errors->has('horaentrada')?'has-error':''}}"  value="{{old('horaentrada')}}" >
-                                                @if($errors->has('horaentrada'))
-                                                    <span class="help-block"> {{$errors->first('horaentrada')}}</span>
+                                                <label class="control-label" >Número exterior:</label>
+                                                <input id="num_i" name="num_ext" type="text" class="form-control {{$errors->has('num_ext')?'has-error':''}}"  value="{{old('num_ext')}}" >
+                                                @if($errors->has('num_ext'))
+                                                    <span class="help-block"> {{$errors->first('num_ext')}}</span>
                                                 @endif
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label class="control-label" >Hora de salida:</label>
-                                                <input autocomplete="off" id="horas" name="horasalida" type="text" class="form-control hora {{$errors->has('horasalida')?'has-error':''}}"  value="{{old('cp')}}" >
-                                                @if($errors->has('horasalida'))
-                                                    <span class="help-block"> {{$errors->first('horasalida')}}</span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label class="control-label" >Sueldo mensual:</label>
-                                                <input   name="sueldomensual" id="suledomen" type="text" class="form-control number {{$errors->has('sueldomensual')?'has-error':''}}"  value="{{old('sueldomensual')}}" >
-                                                @if($errors->has('sueldomensual'))
-                                                    <span class="help-block"> {{$errors->first('sueldomensual')}}</span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label class="control-label" >Teléfono oficina:</label>
-                                                <input  name="telefonooficina" id="" type="text" class="form-control number {{$errors->has('telefonooficina')?'has-error':''}}"  value="{{old('telefonooficina')}}" >
-                                                @if($errors->has('telefonooficina'))
-                                                    <span class="help-block"> {{$errors->first('telefonooficina')}}</span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label class="control-label" >Extención oficina:</label>
-                                                <input  name="extencionoficina" id="" type="text" class="form-control number {{$errors->has('extencionoficina')?'has-error':''}}"  value="{{old('extencionoficina')}}" >
-                                                @if($errors->has('extencionoficina'))
-                                                    <span class="help-block"> {{$errors->first('extencionoficina')}}</span>
-                                                @endif
-                                            </div>
-                                        </div>
-
 
                                     </div>
+
 
 
 
@@ -190,6 +142,35 @@
             width: 100%;
             background: #f5f5f591;
         }
+
+        .file {
+            visibility: hidden;
+            position: absolute;
+        }
+        .file_style{
+            border: 2px solid #bdc3c7;
+            color: #34495e;
+            font-family: "Lato", Helvetica, Arial, sans-serif;
+            font-size: 15px;
+            line-height: 1.467;
+            padding: 5px 7px;
+            height: 38px;
+            border-radius: 6px;
+            box-shadow: none;
+            transition: border .25s linear, color .25s linear, background-color .25s linear;
+        }
+        .asd564{
+            display: flex;
+            width: 100%;
+        }
+        .asda75{
+            width: 75%;
+        }
+        .q516{
+            width: 100%;
+            height: 100%;
+        }
+
     </style>
 
 
@@ -223,6 +204,13 @@
         }
 
 
+        $(document).on('click', '.browse', function(){
+            var file = $(this).parent().parent().parent().find('.file');
+            file.trigger('click');
+        });
+        $(document).on('change', '.file', function(){
+            $(this).parent().find('.form-control').val($(this).val().replace(/C:\\fakepath\\/i, ''));
+        });
     </script>
 
 

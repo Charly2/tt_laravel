@@ -15,7 +15,7 @@ class AddConyugeToTrabajadores extends Migration
     {
         Schema::table('trabajadores', function (Blueprint $table) {
             //
-            $table->unsignedInteger('conyuge');
+            $table->unsignedInteger('conyuge')->nullable();
             $table->foreign('conyuge')->references('id')->on('conyuge');
         });
     }
