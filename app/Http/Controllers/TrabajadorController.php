@@ -236,7 +236,14 @@ class TrabajadorController extends Controller
     }
 
     public function completeinformacion_documentos_post(){
-
+        dd(request()->validate([
+            'docA'=>'required',
+            'docB'=>'required',
+            'docC'=>'required',
+            'docD'=>'required',
+            'docE'=>'required'
+        ]));
+        //dd(request()->file('docA'));
     }
 
 

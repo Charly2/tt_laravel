@@ -61,37 +61,97 @@
 
 
 
-                                <form role="form" action="{{url('/completeinformacion_trabajo')}}" style="padding: 15px 0 " method="post">
+                                <form role="form" action="{{url('/completeinformacion_documentos')}}" enctype="multipart/form-data" style="padding: 15px 0 " method="post">
                                     {{ csrf_field() }}
                                     <h4 >Dirección principal</h4>
                                     <div class="row">
-                                        <div class="col-md-4">
+
+
+                                        <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="control-label" >Centro de Trabajo:</label>
-                                                <input id="_a" name="_a" type="text" class="form-control " disabled  value="{{$trabajador->centrodetrabajo}}" >
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label class="control-label" >Número exterior:</label>
-                                                <input type="file" name="img" class="file">
+                                                <label class="control-label" >Oficio del centro de trabajo solicitando la prestación*:</label>
+                                                <input type="file" name="docA" class="file">
                                                 <div class="input-group asd564">
-                                                    <input type="text" class="form-control asda75 file_style"  placeholder="Upload Image">
+                                                    <input type="text" class="form-control asda75 file_style"  placeholder="Adjuntar archivo">
                                                     <span class="input-group-btn" style="display: block;width: 25%;height: 38px;">
-                                                        <button class="browse btn btn-primary q516" type="button"><i class="glyphicon glyphicon-search"></i> Browse</button>
+                                                        <button class="browse btn btn-primary q516" type="button"><i class="glyphicon glyphicon-search"></i> Buscar</button>
                                                     </span>
                                                 </div>
+                                                @if($errors->has('docA'))
+                                                    <span class="help-block show"> {{$errors->first('docA')}}</span>
+                                                @endif
+
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="control-label" >Número exterior:</label>
-                                                <input id="num_i" name="num_ext" type="text" class="form-control {{$errors->has('num_ext')?'has-error':''}}"  value="{{old('num_ext')}}" >
-                                                @if($errors->has('num_ext'))
-                                                    <span class="help-block"> {{$errors->first('num_ext')}}</span>
+                                                <label class="control-label" >Nombramiento de base (FUB)*:</label>
+                                                <input type="file" name="docB" class="file">
+                                                <div class="input-group asd564">
+                                                    <input type="text" class="form-control asda75 file_style"  placeholder="Adjuntar archivo">
+                                                    <span class="input-group-btn" style="display: block;width: 25%;height: 38px;">
+                                                        <button class="browse btn btn-primary q516" type="button"><i class="glyphicon glyphicon-search"></i> Buscar</button>
+                                                    </span>
+                                                </div>
+                                                @if($errors->has('docB'))
+                                                    <span class="help-block show"> {{$errors->first('docB')}}</span>
                                                 @endif
                                             </div>
                                         </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label" >Nombramieto de base con minimo 18 horas para las trabajadoras académicas*:</label>
+                                                <input type="file" name="docC" class="file">
+                                                <div class="input-group asd564">
+                                                    <input type="text" class="form-control asda75 file_style"  placeholder="Adjuntar archivo">
+                                                    <span class="input-group-btn" style="display: block;width: 25%;height: 38px;">
+                                                        <button class="browse btn btn-primary q516" type="button"><i class="glyphicon glyphicon-search"></i> Buscar</button>
+                                                    </span>
+                                                </div>
+                                                @if($errors->has('docC'))
+                                                    <span class="help-block show"> {{$errors->first('docC')}}</span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label" >Constancia de horario de trabajo, expedida por la autoridad correspondiente*:</label>
+                                                <input type="file" name="docD" class="file">
+                                                <div class="input-group asd564">
+                                                    <input type="text" class="form-control asda75 file_style"  placeholder="Adjuntar archivo">
+                                                    <span class="input-group-btn" style="display: block;width: 25%;height: 38px;">
+                                                        <button class="browse btn btn-primary q516" type="button"><i class="glyphicon glyphicon-search"></i> Buscar</button>
+                                                    </span>
+                                                </div>
+                                                @if($errors->has('docD'))
+                                                    <span class="help-block show"> {{$errors->first('docD')}}</span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label" >Copia del último comprobante de percepciones y descuentos (Talón de Pago)*:</label>
+                                                <input type="file" name="docE" class="file">
+                                                <div class="input-group asd564">
+                                                    <input type="text" class="form-control asda75 file_style"  placeholder="Adjuntar archivo">
+                                                    <span class="input-group-btn" style="display: block;width: 25%;height: 38px;">
+                                                        <button class="browse btn btn-primary q516" type="button"><i class="glyphicon glyphicon-search"></i> Buscar</button>
+                                                    </span>
+                                                </div>
+                                                @if($errors->has('docE'))
+                                                    <span class="help-block show"> {{$errors->first('docE')}}</span>
+                                                @endif
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="row">
+
+
+
+
+
 
                                     </div>
 
@@ -169,6 +229,17 @@
         .q516{
             width: 100%;
             height: 100%;
+        }
+
+        .help-block{
+            opacity: 0;
+        }
+        .help-block.show{
+            display: block;
+            margin-top: -5px;
+            margin-bottom: -1px;
+            color: red;
+            opacity: 1;
         }
 
     </style>
