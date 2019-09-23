@@ -16,6 +16,7 @@ class InscripcionesController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('infocomplete');
+        $this->middleware('validadocs');
     }
 
     public function index(){

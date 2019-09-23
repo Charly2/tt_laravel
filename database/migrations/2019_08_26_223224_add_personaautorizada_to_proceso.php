@@ -26,13 +26,13 @@ class AddPersonaautorizadaToProceso extends Migration
         Schema::table('proceso', function (Blueprint $table) {
             //
 
-            $table->unsignedInteger('alumno');
+            $table->unsignedInteger('alumno')->nullable();
             $table->foreign('alumno')->references('id')->on('alumno');
-            $table->string('ciclo_escolar');
-            $table->integer('anterior');
-            $table->integer('estado');
+            $table->string('ciclo_escolar')->nullable();
+            $table->integer('anterior')->nullable();
+            $table->integer('estado')->nullable();
 
-            $table->string('obs');
+            $table->string('obs')->nullable();
 
 
 

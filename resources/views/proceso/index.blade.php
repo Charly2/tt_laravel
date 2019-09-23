@@ -51,7 +51,7 @@
 
                                 <div class="row">
                                     <div class="col-md-4 col-md-offset-4">
-                                        <form action="{{url('/procesoinscripcion/inicio')}}" method="post">
+                                        <form action="{{url('/procesoinscripcion/inicio')}}" method="get">
                                             {{csrf_field()}}
                                             <button type="submit" href="" class="btn btn-success btn-block" style="line-height: 1.8">Iniciar</button>
                                         </form>

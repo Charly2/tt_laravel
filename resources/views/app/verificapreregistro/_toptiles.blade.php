@@ -1,3 +1,7 @@
+
+
+
+
 <div class="row top_tiles">
     <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
         <a href="{{url('/verificapreregistro/')}}">

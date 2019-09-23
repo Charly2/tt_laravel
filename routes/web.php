@@ -33,6 +33,14 @@ Route::post('/verificapreregistro/valida/{id}','VerificaController@validapost')-
 Route::post('/verificapreregistro/rechaza/{id}','VerificaController@rechaza')->name('verifica.rechaza');
 Route::get('/verificapreregistro/ver/{id}','VerificaController@valida')->name('verifica.ver');
 
+Route::get('/validadocumentos/','VerificaDocumentosController@index')->name('validadocumentos.index');
+Route::get('/validadocumentos/cancelados','VerificaDocumentosController@cancelados')->name('validadocumentos.cancelados');
+Route::get('/validadocumentos/aprobados','VerificaDocumentosController@aprobados')->name('validadocumentos.aprobados');
+Route::get('/validadocumentos/valida/{id}','VerificaDocumentosController@valida')->name('validadocumentos.valida');
+Route::post('/validadocumentos/valida/{id}','VerificaDocumentosController@validapost')->name('validadocumentos.validapost');
+Route::post('/validadocumentos/rechaza/{id}','VerificaDocumentosController@rechaza')->name('verivalidadocumentosfica.rechaza');
+Route::get('/validadocumentos/ver/{id}','VerificaDocumentosController@valida')->name('validadocumentos.ver');
+
 
 Route::get('/notificaciones/get','NotificacionesController@get_ajax');
 Route::get('/notificaciones','NotificacionesController@index');
@@ -55,13 +63,16 @@ Route::get('/procesoinscripcion/menor','ProcesoController@menor');
 Route::post('/procesoinscripcion/menor','ProcesoController@menorpost');
 
 
-Route::get('/prueba',function (){
-
+Route::get('/procesovalidacion',function (){
+    return view('avisos.index');
 });
 
 
 
+
+
 Route::get('/files/verificapreregistro/{filename}','FilesController@verificapreregistro')->name('files.verificapreregistro');
+Route::get('/files/documentosTrabajador/{id}/{filename}','FilesController@documentosTrabajador')->name('files.documentosTrabajador');
 
 
 

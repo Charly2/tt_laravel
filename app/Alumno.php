@@ -11,6 +11,8 @@ class Alumno extends Model
     protected $fillable = ['persona'];
 
 
+    protected $table = "alumno";
+
 
 
 }

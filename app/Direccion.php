@@ -13,4 +13,8 @@ class Direccion extends Model
     ];
 
 
+
+    public function direccionForm(){
+        return $this->calle." ".$this->num_int." ".$this->num_ext." ".$this->colonia." ".$this->municipio." ".$this->estado." ".$this->cp;
+    }
 }

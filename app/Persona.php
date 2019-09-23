@@ -27,6 +27,8 @@ class Persona extends Model
         return Direccion::find($this->direccion);
     }
 
+
+
     public function validainfogeneral(){
         //return false;
         if($this->gruposan and

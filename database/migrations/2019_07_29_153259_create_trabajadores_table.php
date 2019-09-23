@@ -14,7 +14,7 @@ class CreateTrabajadoresTable extends Migration
     public function up()
     {
         Schema::create('trabajadores', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->string('numtrabajador')->nullable();
             $table->string('sueldomensual')->nullable();
             $table->string('horasalida')->nullable();

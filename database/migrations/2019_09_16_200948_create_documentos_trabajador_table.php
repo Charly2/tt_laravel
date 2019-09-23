@@ -16,11 +16,11 @@ class CreateDocumentosTrabajadorTable extends Migration
         Schema::create('documentos_trabajador', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedInteger('trabajador')->nullable();
-            $table->string('documentoA');
-            $table->string('documentoB');
-            $table->string('documentoC');
-            $table->string('documentoD');
-            $table->string('documentoE');
+            $table->string('documentoA')->nullable();
+            $table->string('documentoB')->nullable();
+            $table->string('documentoC')->nullable();
+            $table->string('documentoD')->nullable();
+            $table->string('documentoE')->nullable();
             $table->timestamps();
         });
     }

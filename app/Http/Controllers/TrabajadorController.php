@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Direccion;
+use App\Documentos_trabajador;
 use App\Persona;
 use App\Trabajador;
 use Illuminate\Http\Request;
@@ -226,7 +227,11 @@ class TrabajadorController extends Controller
         $trabajador = Auth::user()->getTrabajador();
         $persona = Persona::find($trabajador->persona);
 
-        if ($trabajador->estado == 2){
+        $documentos = Documentos_trabajador::findByTrabajador($trabajador->id);
+
+
+
+        if ($documentos->valida()){
             return redirect('/dashboard');
         }
 
@@ -236,13 +241,77 @@ class TrabajadorController extends Controller
     }
 
     public function completeinformacion_documentos_post(){
-        dd(request()->validate([
+
+        $data = request()->validate([
             'docA'=>'required',
             'docB'=>'required',
             'docC'=>'required',
             'docD'=>'required',
             'docE'=>'required'
-        ]));
+        ]
+        );
+
+        $usuario = Auth::user();
+        $trabajador = Auth::user()->getTrabajador();
+        $trabajador->estado = 3;
+        $trabajador->save();
+
+        $path = storage_path('app/trabajadores/') . $trabajador->id;
+        $exists = file_exists($path);
+        if (!$exists) {
+            mkdir($path, 0777);
+        }
+
+
+
+        $documentos = Documentos_trabajador::findByTrabajador($trabajador->id);
+
+
+
+
+
+        foreach ($data as $key=> $da){
+            $cla = substr($da, -1);
+            $fileExt = request()->file($key)->getClientOriginalName();
+            $fileName = pathinfo($fileExt, PATHINFO_FILENAME);
+            $Ext = request()->file($key)->getClientOriginalExtension();
+            $fileToStore = $key . '.' . $Ext;
+            switch ($key){
+                case 'docA':
+                    $documentos->documentoA = $fileToStore = $key . '.' . $Ext;
+                    break;
+                case 'docB':
+                    $documentos->documentoB = $fileToStore = $key . '.' . $Ext;
+                    break;
+                case 'docC':
+                    $documentos->documentoC = $fileToStore = $key . '.' . $Ext;
+                    break;
+                case 'docD':
+                    $documentos->documentoD = $fileToStore = $key . '.' . $Ext;
+                    break;
+                case 'docE':
+                    $documentos->documentoE = $fileToStore = $key . '.' . $Ext;
+                    break;
+            }
+
+
+
+            move_uploaded_file($_FILES[$key]["tmp_name"], $path . '/' . $fileToStore);
+
+        }
+
+
+        $documentos->save();
+
+
+
+        return redirect('/procesovalidacion');
+
+
+
+
+
+
         //dd(request()->file('docA'));
     }
 
