@@ -18,7 +18,7 @@
                         <div class="wizard-inner">
                             <div class="connecting-line"></div>
                             <ul class="nav nav-tabs" role="tablist">
-                                <li role="presentation" class="active">
+                                <li role="presentation" class="disabled">
                                     <a  >
                                     <span class="round-tab">
                                         <i class="glyphicon glyphicon-user "></i>
@@ -42,7 +42,7 @@
                                         <p>Dirección de Conyuge</p>
                                     </a>
                                 </li>
-                                <li role="presentation" class="disabled">
+                                <li role="presentation" class="active">
                                     <a  >
                                     <span class="round-tab">
                                         <i class="glyphicon glyphicon-user "></i>
@@ -74,7 +74,7 @@
                                 <div class="tab-pane active" role="tabpanel" id="step1">
                                     {{--Inicia el form--}}
 
-                                    <form role="form" action="{{url('/procesoinscripcion/menor')}}" style="padding: 15px 0 " method="post">
+                                    <form role="form" action="{{url('/procesoinscripcion/persona_auth')}}" style="padding: 15px 0 " method="post">
                                         {{ csrf_field() }}
                                         <h4 >Datos generales</h4>
                                         <div class="row">
@@ -154,6 +154,18 @@
                                                     <label class="control-label" >Grupo sanguíneo*:</label>
                                                     <select  name="gruposan" class="form-control">
                                                         @foreach($gruposan as $grupo)
+                                                            <option value="{{ $grupo }}" {{ old('gruposan') == $grupo ? ' selected' : '' }}>
+                                                                {{ $grupo }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="control-label" >Parentesco*:</label>
+                                                    <select  name="parentesco" class="form-control">
+                                                        @foreach($parentesco as $grupo)
                                                             <option value="{{ $grupo }}" {{ old('gruposan') == $grupo ? ' selected' : '' }}>
                                                                 {{ $grupo }}
                                                             </option>

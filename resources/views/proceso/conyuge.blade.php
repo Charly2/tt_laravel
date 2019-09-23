@@ -18,7 +18,7 @@
                         <div class="wizard-inner">
                             <div class="connecting-line"></div>
                             <ul class="nav nav-tabs" role="tablist">
-                                <li role="presentation" class="active">
+                                <li role="presentation" class="disabled">
                                     <a  >
                                     <span class="round-tab">
                                         <i class="glyphicon glyphicon-user "></i>
@@ -26,7 +26,7 @@
                                         <p>Alumno</p>
                                     </a>
                                 </li>
-                                <li role="presentation" class="disabled">
+                                <li role="presentation" class="active">
                                     <a  >
                                     <span class="round-tab">
                                         <i class="glyphicon glyphicon-user "></i>
@@ -74,7 +74,7 @@
                                 <div class="tab-pane active" role="tabpanel" id="step1">
                                     {{--Inicia el form--}}
 
-                                    <form role="form" action="{{url('/procesoinscripcion/menor')}}" style="padding: 15px 0 " method="post">
+                                    <form role="form" action="{{url('/procesoinscripcion/conyuge')}}" style="padding: 15px 0 " method="post">
                                         {{ csrf_field() }}
                                         <h4 >Datos generales</h4>
                                         <div class="row">

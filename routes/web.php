@@ -61,6 +61,18 @@ Route::get('/procesoinscripcion','ProcesoController@index');
 Route::get('/procesoinscripcion/inicio','ProcesoController@inicia');
 Route::get('/procesoinscripcion/menor','ProcesoController@menor');
 Route::post('/procesoinscripcion/menor','ProcesoController@menorpost');
+Route::get('/procesoinscripcion/conyuge','ProcesoController@conyuge');
+Route::post('/procesoinscripcion/conyuge','ProcesoController@conyugepost');
+Route::get('/procesoinscripcion/conyuge_direccion','ProcesoController@conyuge_direccion');
+Route::post('/procesoinscripcion/conyuge_direccion','ProcesoController@conyuge_direccion_post');
+Route::get('/procesoinscripcion/persona_auth','ProcesoController@persona_auth');
+Route::post('/procesoinscripcion/persona_auth','ProcesoController@persona_auth_post');
+Route::get('/procesoinscripcion/persona_auth_direccion','ProcesoController@persona_auth_direccion');
+Route::post('/procesoinscripcion/persona_auth_direccion','ProcesoController@persona_auth_direccion_post');
+Route::get('/procesoinscripcion/documentos','ProcesoController@documentos');
+Route::post('/procesoinscripcion/documentos','ProcesoController@documentos_post');
+Route::get('/procesoinscripcion/cendi','ProcesoController@cendi');
+Route::post('/procesoinscripcion/cendi','ProcesoController@cendi_post');
 
 
 Route::get('/procesovalidacion',function (){

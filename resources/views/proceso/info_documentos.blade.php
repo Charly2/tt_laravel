@@ -23,7 +23,15 @@
                                     <span class="round-tab">
                                         <i class="glyphicon glyphicon-user "></i>
                                     </span>
-                                    <p>Información general</p>
+                                    <p>Alumno</p>
+                                </a>
+                            </li>
+                            <li role="presentation" class="disabled">
+                                <a  >
+                                    <span class="round-tab">
+                                        <i class="glyphicon glyphicon-user "></i>
+                                    </span>
+                                    <p>Conyuge</p>
                                 </a>
                             </li>
                             <li role="presentation" class="disabled" >
@@ -31,18 +39,26 @@
                                     <span class="round-tab">
                                         <i class="glyphicon glyphicon-home"></i>
                                     </span>
-                                    <p>Dirección</p>
+                                    <p>Dirección de Conyuge</p>
+                                </a>
+                            </li>
+                            <li role="presentation" class="disabled">
+                                <a  >
+                                    <span class="round-tab">
+                                        <i class="glyphicon glyphicon-user "></i>
+                                    </span>
+                                    <p>Persona autorizada</p>
                                 </a>
                             </li>
                             <li role="presentation" class="disabled" >
                                 <a >
                                     <span class="round-tab">
-                                        <i class="glyphicon glyphicon-briefcase"></i>
+                                        <i class="glyphicon glyphicon-home"></i>
                                     </span>
-                                    <p>Centro de Trabajo</p>
+                                    <p>Dirección de Persona autorizada</p>
                                 </a>
                             </li>
-                            <li role="presentation" class=" active" >
+                            <li role="presentation" class="  active" >
                                 <a >
                                     <span class="round-tab">
                                         <i class="glyphicon glyphicon-file"></i>
@@ -61,15 +77,15 @@
 
 
 
-                                <form role="form" action="{{url('/completeinformacion_documentos')}}" enctype="multipart/form-data" style="padding: 15px 0 " method="post">
+                                <form role="form" action="{{url('/procesoinscripcion/documentos')}}" enctype="multipart/form-data" style="padding: 15px 0 " method="post">
                                     {{ csrf_field() }}
-                                    <h4 >Documentación del trabajador</h4>
+                                    <h4 >Documentación del menor</h4>
                                     <div class="row">
 
 
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="control-label" >Oficio del centro de trabajo solicitando la prestación*:</label>
+                                                <label class="control-label" >Copia del Acta de Nacimiento del menor certificada por su jefe*:</label>
                                                 <input type="file" name="docA" class="file">
                                                 <div class="input-group asd564">
                                                     <input type="text" class="form-control asda75 file_style"  placeholder="Adjuntar archivo">
@@ -85,7 +101,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="control-label" >Nombramiento de base (FUB)*:</label>
+                                                <label class="control-label" >Certificado Médico del menor*:</label>
                                                 <input type="file" name="docB" class="file">
                                                 <div class="input-group asd564">
                                                     <input type="text" class="form-control asda75 file_style"  placeholder="Adjuntar archivo">
@@ -100,7 +116,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="control-label" >Nombramieto de base con minimo 18 horas para las trabajadoras académicas*:</label>
+                                                <label class="control-label" >Estudio socioeconómico*:</label>
                                                 <input type="file" name="docC" class="file">
                                                 <div class="input-group asd564">
                                                     <input type="text" class="form-control asda75 file_style"  placeholder="Adjuntar archivo">
@@ -113,36 +129,7 @@
                                                 @endif
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="control-label" >Constancia de horario de trabajo, expedida por la autoridad correspondiente*:</label>
-                                                <input type="file" name="docD" class="file">
-                                                <div class="input-group asd564">
-                                                    <input type="text" class="form-control asda75 file_style"  placeholder="Adjuntar archivo">
-                                                    <span class="input-group-btn" style="display: block;width: 25%;height: 38px;">
-                                                        <button class="browse btn btn-primary q516" type="button"><i class="glyphicon glyphicon-search"></i> Buscar</button>
-                                                    </span>
-                                                </div>
-                                                @if($errors->has('docD'))
-                                                    <span class="help-block show"> {{$errors->first('docD')}}</span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="control-label" >Copia del último comprobante de percepciones y descuentos (Talón de Pago)*:</label>
-                                                <input type="file" name="docE" class="file">
-                                                <div class="input-group asd564">
-                                                    <input type="text" class="form-control asda75 file_style"  placeholder="Adjuntar archivo">
-                                                    <span class="input-group-btn" style="display: block;width: 25%;height: 38px;">
-                                                        <button class="browse btn btn-primary q516" type="button"><i class="glyphicon glyphicon-search"></i> Buscar</button>
-                                                    </span>
-                                                </div>
-                                                @if($errors->has('docE'))
-                                                    <span class="help-block show"> {{$errors->first('docE')}}</span>
-                                                @endif
-                                            </div>
-                                        </div>
+
 
 
                                     </div>
