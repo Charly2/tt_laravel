@@ -7,7 +7,8 @@
 
             <div class="x_panel">
             <div class="x_title">
-                <h2><i class="fa fa-bars"></i> Completar Información <small></small></h2>
+                <h2><i class="fa fa-arrow-right "></i> Proceso de inscricpción <small></small></h2>
+
 
                 <div class="clearfix"></div>
             </div>
@@ -64,6 +65,14 @@
                                         <i class="glyphicon glyphicon-file"></i>
                                     </span>
                                     <p>Documentos</p>
+                                </a>
+                            </li>
+                            <li role="presentation" class="  disabled" >
+                                <a >
+                                    <span class="round-tab">
+                                        <i class="glyphicon glyphicon-education"></i>
+                                    </span>
+                                    <p>Cendi</p>
                                 </a>
                             </li>
                         </ul>

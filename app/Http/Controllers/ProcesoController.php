@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Alumno;
+use App\Cendi;
 use App\Conyuge;
 use App\Direccion;
 use App\Documentos_trabajador;
@@ -507,7 +508,49 @@ class ProcesoController extends Controller
     }
 
     public function cendi(){
-        return view('avisos.index');
+        $data = Cendi::all();
+
+        //dd();
+        $usuario = Auth::user();
+        $trabajador = Auth::user()->getTrabajador();
+        $pro = Session::get('proceso');
+
+        $proceso = Proceso::find($pro);
+
+
+        if (!$proceso->cendiopcion){
+            return redirect('/inscripciones');
+        }
+        return view('proceso.cendi',['data'=>$data]);
+    }
+
+
+
+
+    public function cendi_post(){
+        $data = request()->validate([
+            'cendi' => 'required'
+
+        ], [
+            'cendi.required' => 'Debes selecionar un cendi que sea de tu preferencía',
+        ]);
+
+
+        $usuario = Auth::user();
+        $trabajador = Auth::user()->getTrabajador();
+        $pro = Session::get('proceso');
+
+        $proceso = Proceso::find($pro);
+
+        if (!$proceso->cendiopcion){
+            return redirect('/inscripciones');
+        }
+
+        $proceso->cendiopcion = $data['cendi'];
+        $proceso->save();
+
+        return redirect('/inscripciones');
+
     }
 
 
