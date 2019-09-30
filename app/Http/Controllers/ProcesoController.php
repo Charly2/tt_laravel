@@ -547,6 +547,7 @@ class ProcesoController extends Controller
         }
 
         $proceso->cendiopcion = $data['cendi'];
+        $proceso->estado = 1;
         $proceso->save();
 
         return redirect('/inscripciones');

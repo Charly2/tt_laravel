@@ -3,6 +3,8 @@
 namespace App;
 
 
+use Carbon\Carbon;
+use DateTime;
 use Illuminate\Database\Eloquent\Model;
 
 class Persona extends Model
@@ -52,6 +54,14 @@ class Persona extends Model
         $this->email = $newemail;
         dd($this);
         $this->save();
+    }
+
+
+    public function getEdad(){
+        $to = Carbon::createFromFormat('d/m/Y', $this->fechanac);
+        $from = Carbon::now();
+        return $to->diffInYears($from)." años";
+
     }
 
 }

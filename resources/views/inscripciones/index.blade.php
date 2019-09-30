@@ -20,13 +20,12 @@
                         <div class="col-md-12 col-sm-12 col-xs-12 profile_details">
                             <div class="well profile_view">
                                 <div class="col-sm-12">
-                                    <h4 class="brief"><i>Digital Strategist  {{$alumno['id']}}</i></h4>
+
                                     <div class="left col-xs-7">
-                                        <h2>Nicole Pearson</h2>
-                                        <p><strong>About: </strong> Web Designer / UX / Graphic Artist / Coffee Lover </p>
+                                        <h2>{{$alumno->getNombreAlumno()}}</h2>
+                                        <p style="font-size: 16px;"><strong>Edad: </strong> {{$alumno->getEdadAlumno()}} </p>
                                         <ul class="list-unstyled">
-                                            <li><i class="fa fa-building"></i> Address: </li>
-                                            <li><i class="fa fa-phone"></i> Phone #: </li>
+                                            <li style="font-size: 16px;"><i class="fa fa-building"></i>Cendi: {{$alumno->getCendi()}} </li>
                                         </ul>
                                     </div>
                                     <div class="right col-xs-5 text-center">
@@ -39,22 +38,10 @@
                                     </div>
                                 </div>
                                 <div class="col-xs-12 bottom text-center">
-                                    <div class="col-xs-12 col-sm-6 emphasis">
-                                        <p class="ratings">
-                                            <a>4.0</a>
-                                            <a href="#"><span class="fa fa-star"></span></a>
-                                            <a href="#"><span class="fa fa-star"></span></a>
-                                            <a href="#"><span class="fa fa-star"></span></a>
-                                            <a href="#"><span class="fa fa-star"></span></a>
-                                            <a href="#"><span class="fa fa-star-o"></span></a>
-                                        </p>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-6 emphasis">
-                                        <button type="button" class="btn btn-success btn-xs"> <i class="fa fa-user">
-                                            </i> <i class="fa fa-comments-o"></i> </button>
-                                        <button type="button" class="btn btn-primary btn-xs">
-                                            <i class="fa fa-user"> </i> View Profile
-                                        </button>
+                                    <div class="col-xs-12 col-sm-12 emphasis">
+                                        <a type="button" class="btn btn-primary " href="{{url('/inscripciones/'.$alumno->id)}}">
+                                            <i class="fa fa-user"> </i> Ver Inscripción
+                                        </a>
                                     </div>
                                 </div>
                             </div>

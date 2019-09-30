@@ -54,7 +54,9 @@ Route::post('/completeinformacion_general','TrabajadorController@completainfo_ge
 Route::post('/completeinformacion_direccion','TrabajadorController@completeinformacion_direccion_post');
 Route::post('/completeinformacion_trabajo','TrabajadorController@completeinformacion_trabajo_post');
 Route::post('/completeinformacion_documentos','TrabajadorController@completeinformacion_documentos_post');
+
 Route::get('/inscripciones','InscripcionesController@index');
+Route::get('/inscripciones/{id}','InscripcionesController@show');
 
 
 Route::get('/procesoinscripcion','ProcesoController@index');

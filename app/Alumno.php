@@ -15,4 +15,9 @@ class Alumno extends Model
 
 
 
+
+    public function getPersona(){
+       return Persona::find($this->persona);
+    }
+
 }

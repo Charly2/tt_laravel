@@ -13,6 +13,27 @@ class Proceso extends Model
 
     //
 
+    public function getNombreAlumno(){
+
+        return Alumno::find($this->alumno)->getPersona()->nombrecompleto();
+    }
+
+    public function getEdadAlumno(){
+        return Alumno::find($this->alumno)->getPersona()->getEdad();
+    }
+
+
+
+    public function getCendi(){
+        return $this->cendi;
+    }
+
+
+
+    public function validaTrabajador(){
+        return $this->
+    }
+
 
     public function valida(){
         if(

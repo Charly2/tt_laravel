@@ -26,13 +26,23 @@ class InscripcionesController extends Controller
         $trabajador = Auth::user()->getTrabajador();
 
         $pros = Proceso::where('trabajador',$trabajador->id)->get();
-        dd($pros);
 
-
-        $alumnos[] = ['id'=>1,'estado'=>4];
-        $alumnos[] = ['id'=>2,'estado'=>2];
-
-        return view('inscripciones.index',['alumnos'=>$alumnos]);
+        return view('inscripciones.index',['alumnos'=>$pros]);
 
     }
+
+
+    public function show($id){
+        $a = Proceso::find($id);
+        $usuario = Auth::user();
+        $trabajador = Auth::user()->getTrabajador();
+
+        $a->validaTrabajador($trabajador->id);
+
+        //trabajador
+
+        dd($a);
+    }
+
+
 }
