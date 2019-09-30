@@ -37,7 +37,10 @@ class InscripcionesController extends Controller
         $usuario = Auth::user();
         $trabajador = Auth::user()->getTrabajador();
 
-        $a->validaTrabajador($trabajador->id);
+        if ($a->validaTrabajador($trabajador->id)){
+            return view('errors.sinacceso');
+        }
+
 
         //trabajador
 

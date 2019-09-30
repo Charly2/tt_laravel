@@ -30,8 +30,8 @@ class Proceso extends Model
 
 
 
-    public function validaTrabajador(){
-        return $this->
+    public function validaTrabajador($i){
+        return $this->trabajador != $i ? true:false;
     }
 
 
