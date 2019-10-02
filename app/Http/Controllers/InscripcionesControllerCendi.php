@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Alumno;
 use App\Direccion;
 use App\Persona;
+use App\PersonaAuth;
 use App\Proceso;
 use App\Trabajador;
 use Illuminate\Http\Request;
@@ -45,7 +46,10 @@ class InscripcionesControllerCendi extends Controller
         $dir = Direccion::find($persona_t->direccion);
         $alumno = Alumno::find($a->alumno);
         $persona_a = Persona::find($alumno->persona);
-        $persona_au = Persona::find($a->persona_autorizada);
+        $p = PersonaAuth::find($a->persona_autorizada);
+
+        $persona_au = Persona::find($p->persona);
+
         $dir_au = Direccion::find($persona_au->direccion);
 
 
@@ -66,14 +70,17 @@ class InscripcionesControllerCendi extends Controller
 
     public function print($id){
         $a = Proceso::find($id);
+
         $trabajador = Trabajador::find($a->trabajador);
         $persona_t = Persona::find($trabajador->persona);
         $dir = Direccion::find($persona_t->direccion);
         $alumno = Alumno::find($a->alumno);
         $persona_a = Persona::find($alumno->persona);
-        $persona_au = Persona::find($a->persona_autorizada);
-        $dir_au = Direccion::find($persona_au->direccion);
+        $p = PersonaAuth::find($a->persona_autorizada);
 
+        $persona_au = Persona::find($p->persona);
+
+        $dir_au = Direccion::find($persona_au->direccion);
 
         $pdf = PDF::loadView('app.proceso.print', [
             'trabajador'=>$trabajador,

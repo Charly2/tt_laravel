@@ -38,11 +38,15 @@ class ProcesoController extends Controller
     {
 
 
+
+
         $usuario = Auth::user();
         $trabajador = Auth::user()->getTrabajador();
         $persona = Persona::find($trabajador->persona);
 
         $pro = Session::get('proceso');
+
+
 
         if ($pro) {
             $proceso = Proceso::find(\Session::get('proceso'));
@@ -515,10 +519,16 @@ class ProcesoController extends Controller
         $trabajador = Auth::user()->getTrabajador();
         $pro = Session::get('proceso');
 
+
+
         $proceso = Proceso::find($pro);
 
+        //dd($proceso);
 
-        if (!$proceso->cendiopcion){
+
+        if ($proceso->cendiopcion){
+            Session::forget('proceso');
+            Session::save();
             return redirect('/inscripciones');
         }
         return view('proceso.cendi',['data'=>$data]);
@@ -536,19 +546,25 @@ class ProcesoController extends Controller
         ]);
 
 
+
+
         $usuario = Auth::user();
         $trabajador = Auth::user()->getTrabajador();
         $pro = Session::get('proceso');
 
         $proceso = Proceso::find($pro);
 
-        if (!$proceso->cendiopcion){
+
+        if ($proceso->cendiopcion){
             return redirect('/inscripciones');
         }
 
         $proceso->cendiopcion = $data['cendi'];
         $proceso->estado = 1;
         $proceso->save();
+
+
+
 
         return redirect('/inscripciones');
 

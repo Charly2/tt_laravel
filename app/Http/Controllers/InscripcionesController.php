@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Alumno;
 use App\Direccion;
 use App\Persona;
+use App\PersonaAuth;
 use App\Proceso;
 use App\Trabajador;
 use Illuminate\Http\Request;
@@ -53,9 +54,13 @@ class InscripcionesController extends Controller
 //        dd($persona_t);
         $alumno = Alumno::find($a->alumno);
         $persona_a = Persona::find($alumno->persona);
-        $persona_au = Persona::find($a->persona_autorizada);
+        $persona_a = Persona::find($alumno->persona);
+        $p = PersonaAuth::find($a->persona_autorizada);
+        $persona_au = Persona::find($p->persona);
+        //dd($persona_au);
+
         $dir_au = Direccion::find($persona_au->direccion);
-       //dd($dir_au);
+
 
 
 
