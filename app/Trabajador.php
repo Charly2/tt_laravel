@@ -27,6 +27,10 @@ class Trabajador extends Model
         return Persona::find($this->persona);
     }
 
+    public function getPersona(){
+        return Persona::find($this->persona);
+    }
+
     public function setPersona($data){
         $dir =Persona::create($data);
         $this->persona =  $dir->id;;

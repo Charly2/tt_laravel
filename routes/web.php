@@ -58,6 +58,10 @@ Route::post('/completeinformacion_documentos','TrabajadorController@completeinfo
 Route::get('/inscripciones','InscripcionesController@index');
 Route::get('/inscripciones/{id}','InscripcionesController@show');
 
+Route::get('/inscripciones_cendi','InscripcionesControllerCendi@index');
+Route::get('/inscripciones_cendi/{id}','InscripcionesControllerCendi@show');
+Route::get('/inscripciones_cendi/print/{id}','InscripcionesControllerCendi@print');
+
 
 Route::get('/procesoinscripcion','ProcesoController@index');
 Route::get('/procesoinscripcion/inicio','ProcesoController@inicia');

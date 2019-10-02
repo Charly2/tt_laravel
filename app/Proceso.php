@@ -22,7 +22,14 @@ class Proceso extends Model
         return Alumno::find($this->alumno)->getPersona()->getEdad();
     }
 
+    public function getNombreTrabajador(){
+            return Trabajador::find($this->trabajador)->getPersona()->nombrecompleto();
 
+    }
+    public function getNumTrabajador(){
+            return Trabajador::find($this->trabajador)->numtrabajador;
+
+    }
 
     public function getCendi(){
         return $this->cendi;
