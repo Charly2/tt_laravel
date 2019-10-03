@@ -87,6 +87,8 @@ Route::get('/procesovalidacion',function (){
 
 
 
+Route::get('/entrevista_llena', 'Entrevistas@llena')->name('entrevista.llena');
+
 
 
 Route::get('/files/verificapreregistro/{filename}','FilesController@verificapreregistro')->name('files.verificapreregistro');
