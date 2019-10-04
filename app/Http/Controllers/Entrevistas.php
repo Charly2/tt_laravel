@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Alumno;
+use App\Persona;
 use App\Pregunta;
+use App\Proceso;
 use Illuminate\Http\Request;
 
 class Entrevistas extends Controller
@@ -16,13 +19,19 @@ class Entrevistas extends Controller
 
 
             $categoria = 1;
+            $id = 1;
+
+
+            $proeso = Proceso::find($id);
+            $alumno = Alumno::find($proeso->id);
+            $persona = Persona::find($alumno->persona);
 
             $preguntas = Pregunta::where('categoria',$categoria)->get();
 
 
 
 
-            return view('app.entrevista.index',['preguntas'=>$preguntas]);
+            return view('app.entrevista.index',['preguntas'=>$preguntas,'persona_a'=>$persona]);
 
             //dd($preguntas);
 

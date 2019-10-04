@@ -4,7 +4,7 @@
 
 <form role="form" action="{{url('/completeinformacion_general')}}" style="padding: 5px 0 " method="post">
     {{ csrf_field() }}
-    <h4 >Datos generales del trabajador</h4>
+    <h4 >Datos generales del Menor</h4>
     <div class="row">
         <div class="col-md-4">
             <div class="form-group">
