@@ -39,6 +39,9 @@
                         <a href="{{url('/inscripciones_cendi')}}"><i class="fa fa-list-ul  "></i> Lista de Procesos</a>
                     </li>
                     <li>
+                        <a href="{{url('/entrevistas')}}"><i class="fa fa-list-ul  "></i> Lista de Entrevistas</a>
+                    </li>
+                    <li>
                         <a><i class="fa fa-cogs"></i>Inscripciones <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><a href="{{url('/inscripciones')}}">Listar procesos</a></li>

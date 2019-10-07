@@ -14,7 +14,7 @@ class CreateProcesoTable extends Migration
     public function up()
     {
         Schema::create('proceso', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->unsignedInteger('trabajador')->nullable();
             $table->foreign('trabajador')->references('id')->on('trabajadores')->onDelete('set null');
 

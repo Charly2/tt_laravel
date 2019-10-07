@@ -90,9 +90,12 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
+                    <form action="{{url('/entrevista_llena_post')}}" method="post">
+                        {{csrf_field()}}
 
-
-                    @include('app.proceso.menor')
+                    @include('app.proceso._menor')
+                        <input type="hidden" name="id" value="{{$id}}">
+                        <input type="hidden" name="cat" value="{{$cat}}">
 
                     @foreach($preguntas as $pregunta)
                         @if($pregunta->tipo == 1)
@@ -104,22 +107,22 @@
                                     <div class="btn-group" data-toggle="buttons">
                                         @foreach($resps as $r )
                                         <label class="btn issix">
-                                            <input type="radio" name='gender2'  data-cc = "opc{{$pregunta->id}}" data-val="{{$r=="Si"?'true':''}}" class="issi"  >
+                                            <input type="radio" name='opc_{{$pregunta->id}}' value="{{$r}}"  data-cc = "opc{{$pregunta->id}}" data-val="{{$r=="Si"?'true':''}}" class="issi"  >
                                             <i class="fa fa-check-circle-o fa-2x"></i>
                                             <span> {{$r}}</span>
                                         </label>
                                         @endforeach
-                                            <label class="btn issix opc{{$pregunta->id}} opc0"  style="pointer-events: none" classs="">
-                                                <input type="radio" name='gender2s'  >
+                                            <label class="btn issix opc{{$pregunta->id}} opc0"  style="pointer-events: none"
+                                                <input type="radio" name='comp{{$pregunta->id}}'  >
                                                 <i class="fa fa-question-circle-o fa-2x"></i>
                                                 <span> Cuál</span>
                                             </label>
                                     </div>
 
-                                    <input style="width: 50%;" autocomplete="off" id="num_e" name="num_int" type="text" class="form-control opc0 opc{{$pregunta->id}} {{$errors->has('num_int')?'has-error':''}}"  value="{{old('num_int')}}" >
+                                    <input style="width: 50%;" autocomplete="off" id="" name="cp_{{$pregunta->id}}" type="text" class="form-control opc0 opc{{$pregunta->id}} {{$errors->has('num_int')?'has-error':''}}"  value="{{old('num_int')}}" >
                                 </div>
-                                @if($errors->has('num_int'))
-                                    <span class="help-block"> {{$errors->first('num_int')}}</span>
+                                @if($errors->has('opc'.$pregunta->id))
+                                    <span class="help-block"> {{$errors->first('opc'.$pregunta->id)}}</span>
                                 @endif
                             </div>
                         </div>
@@ -133,10 +136,10 @@
                                 <label style="font-size: 19px;" class="control-label" >Comentarios:</label> <br>
                                 <div style="display: flex; justify-content: flex-start; align-items: center;">
 
-                                    <textarea style="width: 65%;" rows="4" autocomplete="off" id="num_e" name="num_int" type="text" class="form-control {{$errors->has('num_int')?'has-error':''}}"  value="{{old('num_int')}}" ></textarea>
+                                    <textarea style="width: 65%;" rows="4" autocomplete="off" id="num_e" name="comentario" type="text" class="form-control {{$errors->has('comentario')?'has-error':''}}"  value="{{old('num_int')}}" ></textarea>
                                 </div>
-                                @if($errors->has('num_int'))
-                                    <span class="help-block"> {{$errors->first('num_int')}}</span>
+                                @if($errors->has('comentario'))
+                                    <span class="help-block"> {{$errors->first('comentario')}}</span>
                                 @endif
                             </div>
                         </div>
@@ -144,15 +147,19 @@
 
                         <div class="col-md-7">
                             <div class="form-group" style="text-align: center;margin-top: 30px">
-                                <button class="btn btn-success sithj">
+                                <input type="hidden" name="res" id="resin">
+                                <button type="button" class="btn btn-success sithj" data-val="ok">
                                     <i class="fa fa-check "></i>
                                     Aprobado
                                 </button>
-                                <button class="btn btn-danger sithj">
+                                <button type="button" class="btn btn-danger sithj" data-val="no">
                                     <i class="fa fa-close "></i>
                                     Rechazado
                                 </button>
                             </div>
+                            @if($errors->has('res'))
+                                <span class="help-block"> {{$errors->first('res')}}</span>
+                            @endif
                         </div>
 
 
@@ -170,7 +177,7 @@
 
 
 
-
+                    </form>
 
 
 
@@ -192,7 +199,7 @@
             opacity: .5;
         }
 
-        .sithj:hover{
+        .sithj:not(.succ):hover{
             transform: scale(1.1);
             opacity: .8;
             transition: all .5s;
@@ -216,9 +223,10 @@
             });
 
             $('.sithj').click(function (e) {
+                $('#resin').val($(this).data('val'));
                 $('.sithj').each(function () {
                     $(this).removeClass('succ');
-                })
+                });
                 $(this).addClass('succ');
             });
         });

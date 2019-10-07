@@ -86,8 +86,10 @@ Route::get('/procesovalidacion',function (){
 });
 
 
-
-Route::get('/entrevista_llena', 'Entrevistas@llena')->name('entrevista.llena');
+Route::get('/entrevistas','Entrevistas@index');
+Route::get('/entrevista_llena/{id}', 'Entrevistas@llena')->name('entrevista.llena');
+Route::get('/entrevista_llena/print/{id}', 'Entrevistas@print')->name('entrevista.print');
+Route::post('/entrevista_llena_post', 'Entrevistas@llena_post')->name('entrevista.llena_post');
 
 
 

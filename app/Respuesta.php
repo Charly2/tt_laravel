@@ -8,4 +8,8 @@ class Respuesta extends Model
 {
     //
 
+    protected $fillable = [
+        'pregunta','resp','entrevista'
+    ];
+
 }
