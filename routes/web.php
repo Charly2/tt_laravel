@@ -100,5 +100,8 @@ Route::get('/files/documentosTrabajador/{id}/{filename}','FilesController@docume
 
 Auth::routes();
 
+
+Route::get('/asigna_uno', 'AsignacionController@index')->name('asigna_uno');
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
