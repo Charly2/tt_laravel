@@ -24,7 +24,7 @@
     <div class="col-md-6">
         <div class="x_panel">
             <div class="x_title">
-                <h2>Grapo A Cendi Jose Lopez {{$j}} <small>4 Lugares</small></h2>
+                <h2>Grapo A Cendi Jose Lopez {{$j}} <small>3 Lugares</small></h2>
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
