@@ -26,12 +26,15 @@ class CendiSeeder extends Seeder
 
         ]);
 
-        Cendi::create([
-            'nombre'=>"Amalia Solorzano de Cardenas" ,
-            "telefono"=>"55555555" ,
-            "directora"=>"Directora de Amalia" ,
-            "direccion"=>$dir->id
 
-        ]);
+        for ($i= 0 ; $i<9;$i++) {
+            Cendi::create([
+                'nombre' => "Amalia Solorzano de Cardenas $i",
+                "telefono" => "55555555",
+                "directora" => "Directora de Amalia",
+                "direccion" => $dir->id
+
+            ]);
+        }
     }
 }

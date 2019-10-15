@@ -40,6 +40,8 @@
                     </li>
                     <li>
                         <a href="{{url('/entrevistas')}}"><i class="fa fa-list-ul  "></i> Lista de Entrevistas</a>
+                    </li><li>
+                        <a href="{{url('/asigna_uno')}}"><i class="fa fa-send  "></i> Asignación</a>
                     </li>
                     <li>
                         <a><i class="fa fa-cogs"></i>Inscripciones <span class="fa fa-chevron-down"></span></a>

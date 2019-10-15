@@ -14,8 +14,8 @@ class AddLogToDireccions extends Migration
     public function up()
     {
         Schema::table('direccions', function (Blueprint $table) {
-            $table->string('long');
-            $table->string('lat');
+            $table->string('long')->nullable();
+            $table->string('lat')->nullable();
         });
     }
 
