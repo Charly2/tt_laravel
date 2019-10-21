@@ -86,6 +86,7 @@ class VerificaController extends Controller
 
 
 
+
             $mail = Mail::send('mails.prueba',['persona' => $persona],function ($m){
                 $m->to('papapitufo10@gmail.com','Juan Carlos')->subject('Prueba de email');
             });

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Proceso;
 use App\Result;
+use App\Trabajador;
+use App\User;
 use Illuminate\Http\Request;
 use DB;
 class AsignacionController extends Controller
@@ -29,14 +32,20 @@ class AsignacionController extends Controller
         $lug = 5;
 
         $res  = Result::where('cendi',$id)->orderBy('result')->get();
-
+        $a = [];$b=[];
 
         $asig = [];$i=0;$sinasig = [];
         foreach ($res as $key => $item) {
             if ($i < $lug){
-                $asig[] = $res->pull($key);
+
+                $aux = $res->pull($key);
+                $asig[] =$aux;
+
+                $a[] = Proceso::find($aux->proceso);
             }else{
-                $sinasig[] = $res->pull($key);
+                $aux = $res->pull($key);
+                $sinasig[] =$aux;
+                $b[] = Proceso::find($aux->proceso);
 
             }
             $i++;
@@ -45,8 +54,9 @@ class AsignacionController extends Controller
 
 
 
+        //dd(User::where('entidad',Trabajador::find(1)->id)->where('rol','trabajador')->get()->first()->id);
 
-        return view('app.asigna.index',['si'=>$asig,'no'=>$sinasig,'num'=>$lug]);
+        return view('app.asigna.index',['si'=>$asig,'no'=>$sinasig,'num'=>$lug,'a'=>$a,'b'=>$b]);
 
     }
 }

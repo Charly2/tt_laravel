@@ -35,6 +35,10 @@ class Proceso extends Model
         return $this->cendi;
     }
 
+    public function getPhoto(){
+        return $this->trabajador;
+        return User::where('entidad',Trabajador::find($this->trabajador)->id)->where('rol','trabajador')->get()->first()->id;
+    }
 
 
     public function validaTrabajador($i){

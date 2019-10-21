@@ -34,7 +34,7 @@
                         <div class="profile_img">
                             <div id="crop-avatar">
                                 <!-- Current avatar -->
-                                <img class="img-responsive avatar-view" src="images/picture.jpg" alt="Avatar" title="Change the avatar">
+                                <img class="img-responsive avatar-view" src="{{'/perfil/'.'img_'.Auth::user()->id.'.jpg'}}" alt="Avatar" title="Change the avatar">
                             </div>
                         </div>
                         <h3>Samuel Doe</h3>

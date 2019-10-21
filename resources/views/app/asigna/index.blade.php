@@ -45,22 +45,22 @@
                         <div class="col-md-6">
                             <h4 class="text-center">Asignados</h4>
                             <ul class="list-unstyled msg_list" id="asigandos">
-                                @foreach($si as $s)
+                                @for($i=0;$i<count($si);$i++)
                                     <li class="itemComp col-md-6">
                                         <a>
                                     <span class="image">
-                                      <img src="{{asset('images/img.jpg')}}" alt="img" />
+                                      <img src="{{asset('perfil/img_'.$a[$i]->getPhoto().'.jpg')}}" alt="img" />
                                     </span>
                                             <span>
-                                      <span>Nombre del Alumno con el proceso num {{$s->proceso}} </span>
-                                      <span class="time">{{$s->result}}</span>
+                                      <span style="text-transform: uppercase;">{{$a[$i]->getNombreAlumno()}} </span>
+                                      <span class="time">{{$si[$i]->result}}</span>
                                     </span>
                                         <span class="message">
                                           Información sobre el alumno
                                         </span>
                                         </a>
                                     </li>
-                                @endforeach
+                                @endfor
                             </ul>
                         </div>
                         <div class="col-md-6">
@@ -73,7 +73,7 @@
                                       <img src="{{asset('images/img.jpg')}}" alt="img" />
                                     </span>
                                             <span>
-                                      <span>Nombre del Alumno con el proceso num {{$s->proceso}} </span>
+                                      <span>{{\App\Proceso::find($s->proceso)}} </span>
                                       <span class="time">{{$s->result}}</span>
                                     </span>
                                             <span class="message">
