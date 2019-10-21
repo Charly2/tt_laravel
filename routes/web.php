@@ -102,6 +102,7 @@ Auth::routes();
 
 
 Route::get('/asigna_uno', 'AsignacionController@index')->name('asigna_uno');
+Route::get('/asigna_uno/actualiza', 'AsignacionController@actualiza')->name('actualiza');
 Route::get('/asigna_uno/{id}', 'AsignacionController@show')->name('show');
 
 

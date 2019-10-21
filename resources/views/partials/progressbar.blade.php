@@ -44,13 +44,13 @@
         </div>
         <div class="main_cont_text">
             <div class="main_cont_text_item">
-                <h5>Paso 1</h5>
+                <h5>Validación Completa</h5>
             </div>
             <div class="main_cont_text_item">
-                <h5>Paso 2</h5>
+                <h5>En espera de asignación</h5>
             </div>
             <div class="main_cont_text_item">
-                <h5>Paso 3</h5>
+                <h5>Cendi Asignado</h5>
             </div>
             <div class="main_cont_text_item">
                 <h5>Paso 4</h5>

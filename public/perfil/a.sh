@@ -1,7 +1,6 @@
-max=1000
-for (( i=1; i <= $max; ++i ))
+max=300
+for (( i=200; i <= $max; ++i ))
 do
-    curl https://picsum.photos/id/$i/300/300 --output img_$i.jpg
+    curl http://localhost:8000/genera/$i
 done
-#curl https://picsum.photos/id/${i}/300/300 --output img_${i}.jpg
 

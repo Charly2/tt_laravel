@@ -46,7 +46,7 @@
                             <h4 class="text-center">Asignados</h4>
                             <ul class="list-unstyled msg_list" id="asigandos">
                                 @for($i=0;$i<count($si);$i++)
-                                    <li class="itemComp col-md-6">
+                                    <li class="itemComp col-md-6 " data-id="{{$a[$i]->id}}">
                                         <a>
                                     <span class="image">
                                       <img src="{{asset('perfil/img_'.$a[$i]->getPhoto().'.jpg')}}" alt="img" />
@@ -66,22 +66,22 @@
                         <div class="col-md-6">
                             <h4 class="text-center">Sin asignar</h4>
                             <ul class="list-unstyled msg_list" id="sinasignar">
-                                @foreach($no as $s)
-                                    <li class="itemComp col-md-6">
+                                @for($i=0;$i<count($no);$i++)
+                                    <li class="itemComp col-md-6" data-id="{{$b[$i]->id}}">
                                         <a>
                                     <span class="image">
-                                      <img src="{{asset('images/img.jpg')}}" alt="img" />
+                                      <img src="{{asset('perfil/img_'.$b[$i]->getPhoto().'.jpg')}}" alt="img" />
                                     </span>
                                             <span>
-                                      <span>{{\App\Proceso::find($s->proceso)}} </span>
-                                      <span class="time">{{$s->result}}</span>
+                                      <span style="text-transform: uppercase;">{{$b[$i]->getNombreAlumno()}} </span>
+                                      <span class="time">{{$no[$i]->result}}</span>
                                     </span>
                                             <span class="message">
                                           Información sobre el alumno
                                         </span>
                                         </a>
                                     </li>
-                                @endforeach
+                                @endfor
                             </ul>
                         </div>
                     </div>
@@ -103,29 +103,48 @@
 
 
         $('.bbt').click(function () {
-            Swal.fire({
-                title: '¿Estás seguro? ',
-                text: "Una vez que finalices la asignación no podrás hacer cambios",
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#6b2848',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Si, finalizar',
-                cancelButtonText:'Cancelar'
-            }).then((result) => {
-                if (result.value) {
-                    new PNotify({
-                        title: 'Perfecto',
-                        text: 'Se finalizo correctamente',
-                        type: 'success',
-                        styling: 'bootstrap3'
-                    });
-                    setTimeout(function () {
-                        window.location.href = "/asigna_uno";
-                    },3000)
+            $asi = [];
+            $('#asigandos > li.itemComp').each(function (e,i) {
+                $asi.push($(this).data('id'));
+            });
 
-                }
-            })
+
+
+
+
+            $.get('{{url('/asigna_uno/actualiza')}}',{
+                'data':$asi,
+                'id':{{$id}},
+            }).done(function (data) {
+                console.log(data);
+
+                Swal.fire({
+                    title: '¿Estás seguro? ',
+                    text: "Una vez que finalices la asignación no podrás hacer cambios",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#6b2848',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Si, finalizar',
+                    cancelButtonText:'Cancelar'
+                }).then((result) => {
+                    if (result.value) {
+                        new PNotify({
+                            title: 'Perfecto',
+                            text: 'Se finalizo correctamente',
+                            type: 'success',
+                            styling: 'bootstrap3'
+                        });
+                        setTimeout(function () {
+                            window.location.href = "/asigna_uno";
+                        },3000)
+
+                    }
+                })
+
+            });
+
+
         });
 
 
@@ -137,6 +156,7 @@
                 name: "shared",
                 pull: function (to,from) {
                     return (to.el.children.length)<{{$num}};
+
                 },
             },
             onChange: function(/**Event*/evt) {

@@ -15,10 +15,6 @@
 
 
 
-
-
-
-
     <div class="col-md-12">
         <div class="x_panel">
             <div class="x_title">
@@ -28,18 +24,30 @@
             <div class="x_content">
                 <div class="row">
 
-                    <div class="row dieflex">
+                    <div class="row ">
+                        @php $i =0; @endphp
                         @foreach($data as $d)
-                            <div class="col-md-3 col-sm-3 col-xs-12 profile_details" onclick="sendm({{$d->id}})">
-                                <div class="well profile_view cendiitem" data-id="{{$d->id}}">
-                                    <i class="paloma fa fa-check-circle "></i>
-                                    <div class="col-sm-12">
-                                        <div class="left col-xs-12" style="margin-top: 0">
-                                            <h4>"{{$d->nombre}}"</h4>
-                                            <p><strong>Ubicación: </strong>  Oroya No. 760, Col. Lindavista, Alcaldía Gustavo A. Madero, C.P. 07300.</p>
-                                            <ul class="list-unstyled">
-                                                <li><i class="fa fa-user "></i> {{$d->directora}} </li>
-                                                <li><i class="fa fa-phone "></i> {{$d->telefono}} </li>
+                            @php $i++;@endphp
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                <div class="x_panel">
+                                    <div class="x_title">
+                                        <h4>{{$d->nombre}}<small> </small></h4>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="x_content">
+                                        <div class="">
+                                            <ul class="to_do">
+                                                @foreach($grupos[$i] as $gru)
+                                                    <li>
+                                                        <a {{$gru->estado==0?'href='.url('/asigna_uno/'.$gru->grupo):''}}>
+                                                            <p CLASS="cendiitem {{$gru->estado==1?'hover':''}}">
+                                                                <i class="paloma fa fa-check-circle "></i>
+                                                                <span>{{$gru->nombre}}</span>
+                                                            </p>
+                                                        </a>
+                                                    </li>
+                                                @endforeach
+
                                             </ul>
                                         </div>
                                     </div>
@@ -73,24 +81,21 @@
             align-items: center;
             flex-wrap: wrap;
         }
-        .cendiitem{
-            position: relative;
-            border: 2px solid #e3e3e3;
+
+         .paloma{
+             position: absolute;
+             opacity: 0;
+             color: #6b2848;
+             font-size: 20px;
+             right: 10px;
+             top: 7px;f
         }
-        .cendiitem:hover,.cendiitem.hover{
-            border: 2px solid #6b2848;
-            cursor: pointer;
-        }
-        .cendiitem .paloma{
-            opacity: 0;
-            position: absolute;
-            right: 10px;
-            top: 10px;
-            color: #6b2848;
-            font-size: 25px;
-        }
-        .cendiitem:hover .paloma,.cendiitem.hover .paloma{
+        .cendiitem.hover .paloma{
             opacity: 1;
+        }
+
+        .none{
+            pointer-events: none;
         }
     </style>
 

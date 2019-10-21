@@ -1,0 +1,65 @@
+SELECT * from cendi_2.grupos g inner join cendi_2.grupo_ciclo gc on gc.grupo = g.id where cendi = 7
+
+
+update cendi_2.grupo_ciclo set estado = 0 where 1
+
+
+update cendi_2.proceso set cendi = null  where 1
+
+
+select * from cendi_2.proceso  p INNER join cendi_2.`result` r on p.id = r.proceso
+
+
+
+select * from cendi_2.grupo_ciclo;
+
+
+select * from cendi_2.proceso
+
+SELECT * from cendi_2.grupos g inner join cendi_2.grupo_ciclo gc on gc.grupo = g.id where cendi = 7 group by gc.grupo;
+
+select * from cendi_2.cendi;
+
+
+truncate table cendi_2.result
+
+
+
+
+INSERT INTO cendi_2.grupos (nombre,`next`,cupo,cendi,created_at,updated_at) VALUES
+('Lactantes',0,30,9,NULL,NULL)
+,('Maternales',0,30,9,NULL,NULL)
+,('Preescolares',0,30,9,NULL,NULL)
+
+
+INSERT INTO cendi_2.grupo_ciclo (ciclo,grupo,disponibles,created_at,updated_at,estado) VALUES
+ (1,1,2,NULL,NULL,1)
+,(1,2,3,NULL,NULL,0)
+,(1,3,0,NULL,NULL,0)
+,(1,4,2,NULL,NULL,0)
+,(1,5,5,NULL,NULL,0)
+,(1,6,4,NULL,NULL,0)
+,(1,7,1,NULL,NULL,0)
+,(1,8,0,NULL,NULL,0)
+,(1,9,2,NULL,NULL,0)
+,(1,10,1,NULL,NULL,0)
+,(1,11,1,NULL,NULL,0)
+,(1,12,2,NULL,NULL,0)
+,(1,13,3,NULL,NULL,0)
+,(1,14,2,NULL,NULL,0)
+,(1,15,5,NULL,NULL,0)
+,(1,16,4,NULL,NULL,0)
+,(1,17,1,NULL,NULL,0)
+,(1,18,0,NULL,NULL,0)
+,(1,19,2,NULL,NULL,0)
+,(1,20,1,NULL,NULL,0)
+,(1,21,1,NULL,NULL,0)
+,(1,22,2,NULL,NULL,0)
+,(1,23,3,NULL,NULL,0)
+;
+
+
+
+
+SELECT * from cendi_2.grupos g inner join cendi_2.grupo_ciclo gc on gc.grupo = g.id where g.cendi = 7
+

@@ -26,12 +26,12 @@ class Genera extends Controller
 
 
 
-            $url = "https://uinames.com/api/?region=Mexico&ext";
+            /*$url = "https://uinames.com/api/?region=Mexico&ext";
             $response = file_get_contents($url);
-            $response = json_decode($response);
-            $g = $response->gender=="female"?'M':'H';
+            $response = json_decode($response);*/
+            $g = ['M','H'];
             $p1 = \App\Persona::create([
-                'nombre' =>$response->name,
+                'nombre' =>$ptr->nombre." Jr",
                 'appaterno' => $ptr->appaterno,
                 'apmaterno'=> $ptr->apmaterno,
                 'fechanac' => "00/00/0000",
@@ -41,7 +41,7 @@ class Genera extends Controller
                 'email'=>null,
                 'gruposan' => $ptr->gruposan,
                 'direccion' =>null,
-                'genero'=>$g
+                'genero'=>$g[rand(0,1)]
             ]);
 
             $alumno = \App\Alumno::create([
@@ -49,22 +49,22 @@ class Genera extends Controller
             ]);
 
 
-            $url = "https://uinames.com/api/?region=Mexico&ext";
+           /* $url = "https://uinames.com/api/?region=Mexico&ext";
             $response2 = file_get_contents($url);
             $response2 = json_decode($response2);
-            $g = $response2->gender=="female"?'M':'H';
-            $p2 = \App\Persona::create([
-                'nombre' =>$response2->name,
-                'appaterno' => $response2->surname,
-                'apmaterno'=> $response->surname,
-                'fechanac' => $response2->birthday->dmy,
+            $g = $response2->gender=="female"?'M':'H';*/
+            $p2 =  \App\Persona::create([
+                'nombre' =>$ptr->nombre." Sr",
+                'appaterno' => $ptr->appaterno,
+                'apmaterno'=> $ptr->apmaterno,
+                'fechanac' => "00/00/0000",
                 'lugarnac' => $ptr->lugarnac,
-                'estadocivil' => 'Casado',
+                'estadocivil' => null,
                 'curp' => "AAAA000000XXXXXX00",
-                'email'=> $response2->email,
+                'email'=>null,
                 'gruposan' => $ptr->gruposan,
                 'direccion' =>null,
-                'genero'=>$g
+                'genero'=>$g[rand(0,1)]
             ]);
 
             $conyuge = Conyuge::create([
@@ -93,18 +93,18 @@ class Genera extends Controller
             $response3 = file_get_contents($url);
             $response3 = json_decode($response3);
             $g = $response3->gender=="female"?'M':'H';
-            $p3 = \App\Persona::create([
-                'nombre' =>$response3->name,
+            $p3 =  \App\Persona::create([
+                'nombre' =>$ptr->nombre." Segundo",
                 'appaterno' => $ptr->appaterno,
-                'apmaterno'=> $response3->surname,
-                'fechanac' => $response3->birthday->dmy,
+                'apmaterno'=> $ptr->apmaterno,
+                'fechanac' => "00/00/0000",
                 'lugarnac' => $ptr->lugarnac,
-                'estadocivil' => $edoci[rand(0,1)],
+                'estadocivil' => null,
                 'curp' => "AAAA000000XXXXXX00",
-                'email'=> $response3->email,
+                'email'=>null,
                 'gruposan' => $ptr->gruposan,
                 'direccion' =>null,
-                'genero'=>$g
+                'genero'=>$g[rand(0,1)]
             ]);
 
 
@@ -143,12 +143,14 @@ class Genera extends Controller
 
             $proceso->alumno = $alumno->id;
             $proceso->persona_autorizada = $perauth->id;
+
+            $proceso->grupo = rand(0,22);
             $proceso->save();
 
 
             echo "OK";
 
-            VarDumper::dump($proceso);
+
 
 
 
