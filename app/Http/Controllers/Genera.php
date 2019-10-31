@@ -2,14 +2,138 @@
 
 namespace App\Http\Controllers;
 
+use App\Alumno;
 use App\Conyuge;
+use App\Persona;
 use App\PersonaAuth;
+use App\Proceso;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Symfony\Component\VarDumper\VarDumper;
 
 class Genera extends Controller
 {
     //
+
+    function randomDateInRange() {
+        $startDate = Carbon::create(2014,8,1);
+        $endDate   = Carbon::create(2015,5,1);
+
+        $randomDate = Carbon::createFromTimestamp(rand($endDate->timestamp, $startDate->timestamp))->format('Y-m-d');
+        return $randomDate;
+    }
+
+    public function reins_a(){
+        $pro = Proceso::all();
+        foreach ($pro as $p ){
+            $per =  Persona::find(Alumno::find($p->alumno)->persona);
+            $p->anterior = $this->setnivel2020($per->fechanac);
+            $p->save();
+            echo $p->id."---".$per->fechanac. " ---" .$p->nivel. " ---" .$p->anterior. " ---" ;
+            //echo $this->setnivel($per->fechanac);
+
+
+
+            echo "<br>";
+        }
+    }
+
+
+    public function nivel(){
+        echo "aqi";
+      /*$pro = Proceso::all();
+        $i = 1;
+        foreach ($pro as $p ){
+            if ($i >= 1050 && $i <= 1200){
+
+            $per =  Persona::find(Alumno::find($p->alumno)->persona);
+            $per->fechanac = $this->randomDateInRange();
+            $per->save();
+                echo $p->id."---".$per->fechanac. " ---" .$p->nivel. " ---" ;
+            echo $per->fechanac;
+                echo "<br>";
+            }
+
+
+            $i++;
+
+        }*/
+
+
+        $pro = Proceso::all();
+        foreach ($pro as $p ){
+            $per =  Persona::find(Alumno::find($p->alumno)->persona);
+            $p->nivel = $this->setnivel($per->fechanac);
+            $p->save();
+            echo $p->id."---".$per->fechanac. " ---" .$p->nivel. " ---" ;
+            //echo $this->setnivel($per->fechanac);
+
+
+
+            echo "<br>";
+        }
+
+
+
+
+    }
+
+    public function setnivel($d){
+        $da = explode('-',$d);
+        if (count($da) == 1){
+            die();
+        }
+        $din = Carbon::create($da[0],$da[1],$da[2]);
+
+        if ($din->between(Carbon::create(2019,2,1),Carbon::create(2018,8,1))){
+            return 1;
+        }
+        if ($din->between(Carbon::create(2018,8,1),Carbon::create(2018,1,1))){
+            return 2;
+        }
+        if ($din->between(Carbon::create(2018,1,1),Carbon::create(2017,8,1))){
+            return 3;
+        }
+        if ($din->between(Carbon::create(2017,8,1),Carbon::create(2016,8,1))){
+            return 4;
+        }
+        if ($din->between(Carbon::create(2016,8,1),Carbon::create(2015,5,1))){
+            return 5;
+        }
+        if ($din->between(Carbon::create(2015,5,1),Carbon::create(2014,8,1))){
+            return 6;
+        }
+
+    }
+    public function setnivel2020($d){
+        $da = explode('-',$d);
+        if (count($da) == 1){
+            die();
+        }
+        $din = Carbon::create($da[0],$da[1],$da[2]);
+
+        if ($din->between(Carbon::create(2020,2,1),Carbon::create(2019,8,1))){
+            return 1;
+        }
+        if ($din->between(Carbon::create(2019,8,1),Carbon::create(2019,1,1))){
+            return 2;
+        }
+        if ($din->between(Carbon::create(2019,1,1),Carbon::create(2018,8,1))){
+            return 3;
+        }
+        if ($din->between(Carbon::create(2018,8,1),Carbon::create(2017,8,1))){
+            return 4;
+        }
+        if ($din->between(Carbon::create(2017,8,1),Carbon::create(2016,5,1))){
+            return 5;
+        }
+        if ($din->between(Carbon::create(2016,5,1),Carbon::create(2015,8,1))){
+            return 6;
+        }if ($din->between(Carbon::create(2015,5,1),Carbon::create(2014,8,1))){
+            return 100;
+        }
+
+    }
 
     public function show($id){
 
@@ -131,7 +255,8 @@ class Genera extends Controller
 
 
             $proceso = \App\Proceso::create([
-                'trabajador' => $tr->id
+                'trabajador' => $tr->id,
+                'nivel'=>0
             ]);
             $proceso->documentoA  = "doc_A.jpg";
             $proceso->documentoB  = "doc_B.pdf";
@@ -139,6 +264,7 @@ class Genera extends Controller
 
             $proceso->cendiopcion = rand(1,6);
             $proceso->estado = 1;
+            $proceso->nivel = 0;
 
 
             $proceso->alumno = $alumno->id;
@@ -146,6 +272,9 @@ class Genera extends Controller
 
             $proceso->grupo = rand(0,22);
             $proceso->save();
+
+            $tr->conyuge = $conyuge->id;
+            $tr->save();
 
 
             echo "OK";

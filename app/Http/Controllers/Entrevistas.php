@@ -63,7 +63,9 @@ class Entrevistas extends Controller
 
             //$proeso = Proceso::find($id);
             $alumno = Alumno::findOrFail($id);
-        $proceso = Proceso::where('alumno',$alumno->id)->get()->first();
+        $proceso = Proceso::find($alumno->id)->get()->first();
+
+
 
         $entre = Entrevista::where('proceso',$proceso->id)->get()->first();
         $categoria = $entre->categoria;

@@ -186,7 +186,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
 
-                                            {{--<div id="map"></div>--}}
+                                            <div id="map"></div>
 
 
                                         </div>
@@ -263,7 +263,7 @@
         });
 
         function setMaps() {
-            /*GMaps.geocode({
+            GMaps.geocode({
                 address:getdir(),
                 callback: function(results, status){
                     console.dir(status)
@@ -277,7 +277,7 @@
                         });
                     }
                 }
-            });*/
+            });
         }
 
 
@@ -296,7 +296,7 @@
 
 
 
-    {{--<script type="text/javascript" src="//maps.google.com/maps/api/js?key=AIzaSyDaKaRdamRqFDTwe0sCgo0taIlxAfxjPis"></script>
+    <script type="text/javascript" src="//maps.google.com/maps/api/js?key=AIzaSyDaKaRdamRqFDTwe0sCgo0taIlxAfxjPis"></script>
     <script src="{{asset('js/gmaps.js')}}"></script>
 
     <script>
@@ -324,7 +324,7 @@
                 }
             });
         });
-    </script>--}}
+    </script>
 
 
 @endsection

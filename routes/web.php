@@ -84,6 +84,9 @@ Route::post('/procesoinscripcion/cendi','ProcesoController@cendi_post');
 Route::get('/procesovalidacion',function (){
     return view('avisos.index');
 });
+Route::get('/mail',function (){
+
+});
 
 
 Route::get('/entrevistas','Entrevistas@index');
@@ -107,6 +110,15 @@ Route::get('/asigna_uno/{id}', 'AsignacionController@show')->name('show');
 
 
 Route::get('/genera/{id}', 'Genera@show')->name('showww');
+Route::get('/nivel', 'Genera@nivel')->name('nivel');
+Route::get('/reins_a', 'Genera@reins_a')->name('reins_a');
+
+
+
+Route::get('/procesos_cendi', 'Completos@index')->name('procesos_cendi');
+Route::get('/procesos_cendi/{id}', 'Completos@show')->name('procesos_cendiid');
+
+
 
 
 Route::get('/home', 'HomeController@index')->name('home');

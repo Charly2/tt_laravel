@@ -46,7 +46,7 @@
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <label class="control-label" >Estado Civil:</label>
+                <label class="control-label" >Fecha de nacimiento:</label>
                 <input type="text" class="form-control "  value="{{$persona_a->fechanac}}" disabled>
 
             </div>

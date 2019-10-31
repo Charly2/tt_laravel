@@ -31,6 +31,11 @@
             <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
+
+                    @if(Auth::user()->rol!="trabajador")
+                    <li>
+                        <a href="{{url('/procesos_cendi')}}"><i class="fa fa-database "></i> Lista de Inscripciones</a>
+                    </li>
                     <li>
                         <a href="{{url('/verificapreregistro')}}"><i class="fa fa-check"></i> Valida Preregistro</a>
                     </li>
@@ -45,6 +50,7 @@
                     </li><li>
                         <a href="{{url('/asigna_uno')}}"><i class="fa fa-send  "></i> Asignación</a>
                     </li>
+                    @else
                     <li>
                         <a><i class="fa fa-cogs"></i>Inscripciones <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
@@ -59,6 +65,7 @@
                             <li><a href="#">Listar </a></li>
                         </ul>
                     </li>
+                     @endif
                 </ul>
             </div>
 

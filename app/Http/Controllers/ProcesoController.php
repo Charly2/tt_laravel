@@ -29,6 +29,11 @@ class ProcesoController extends Controller
         $this->middleware('validadocs');
     }
 
+
+
+
+
+
     public function index()
     {
         return view('proceso.index');
@@ -53,7 +58,8 @@ class ProcesoController extends Controller
         } else {
 
             $proceso = Proceso::create([
-                'trabajador' => $trabajador->id
+                'trabajador' => $trabajador->id,
+                'nivel' => 0
             ]);
 
             Session::put('proceso', $proceso->id);

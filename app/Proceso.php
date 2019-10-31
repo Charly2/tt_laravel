@@ -9,9 +9,13 @@ class Proceso extends Model
 
     protected $table = "proceso";
 
-    protected $fillable = ['trabajador'];
+    protected $fillable = ['trabajador','nivel'];
 
     //
+
+    public function getAlumno(){
+        return Alumno::find($this->alumno)->getPersona();
+    }
 
     public function getNombreAlumno(){
 
@@ -20,6 +24,9 @@ class Proceso extends Model
 
     public function getEdadAlumno(){
         return Alumno::find($this->alumno)->getPersona()->getEdad();
+    }
+    public function getEdadAlumno2(){
+        return rand(1,5)." años";
     }
 
     public function getNombreTrabajador(){

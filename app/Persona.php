@@ -58,9 +58,18 @@ class Persona extends Model
 
 
     public function getEdad(){
-        $to = Carbon::createFromFormat('d/m/Y', $this->fechanac);
+        return rand(1,5)." años";
+        $to = Carbon::createFromFormat('Y/m/d', $this->fechanac);
         $from = Carbon::now();
         return $to->diffInYears($from)." años";
+
+    }
+
+
+    public function getEdad2(){
+        $to = Carbon::createFromFormat('d/m/Y', $this->fechanac);
+        $from = Carbon::now();
+        return rand(1,5)." años";
 
     }
 

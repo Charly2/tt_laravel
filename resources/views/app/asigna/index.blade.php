@@ -52,7 +52,7 @@
                                       <img src="{{asset('perfil/img_'.$a[$i]->getPhoto().'.jpg')}}" alt="img" />
                                     </span>
                                             <span>
-                                      <span style="text-transform: uppercase;">{{$a[$i]->getNombreAlumno()}} </span>
+                                      <span style="text-transform: uppercase;">{{$a[$i]->id}}-{{$a[$i]->getNombreAlumno()}} </span>
                                       <span class="time">{{$si[$i]->result}}</span>
                                     </span>
                                         <span class="message">
@@ -73,7 +73,7 @@
                                       <img src="{{asset('perfil/img_'.$b[$i]->getPhoto().'.jpg')}}" alt="img" />
                                     </span>
                                             <span>
-                                      <span style="text-transform: uppercase;">{{$b[$i]->getNombreAlumno()}} </span>
+                                      <span style="text-transform: uppercase;">{{$b[$i]->id}}-{{$b[$i]->getNombreAlumno()}} </span>
                                       <span class="time">{{$no[$i]->result}}</span>
                                     </span>
                                             <span class="message">
