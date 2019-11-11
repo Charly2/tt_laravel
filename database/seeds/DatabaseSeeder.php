@@ -13,15 +13,15 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UsersTableSeeder::class);
         //$this->call(proceso::class);
-        $this->call(GruposSeeder::class);
+        //$this->call(GruposSeeder::class);
 
 
-        /*$this->call(EstadosSeeder::class);
+        $this->call(EstadosSeeder::class);
         $this->call(CentraSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(NotificaionSeeder::class);
         $this->call(CendiSeeder::class);
-        $this->call(MainSeeder::class);*/
+        $this->call(MainSeeder::class);
 
     }
 }

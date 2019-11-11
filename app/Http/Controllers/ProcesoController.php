@@ -53,6 +53,8 @@ class ProcesoController extends Controller
 
 
 
+
+
         if ($pro) {
             $proceso = Proceso::find(\Session::get('proceso'));
         } else {
@@ -61,9 +63,16 @@ class ProcesoController extends Controller
                 'trabajador' => $trabajador->id,
                 'nivel' => 0
             ]);
+            Entrevistas::create([
+                'estado' => 0,
+                'categoria' => 1,
+                'proceso' => $proceso->id]);
 
             Session::put('proceso', $proceso->id);
         }
+
+
+
 
         Session::save();
 
